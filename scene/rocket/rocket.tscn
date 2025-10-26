@@ -1,0 +1,79 @@
+[gd_scene load_steps=13 format=3 uid="uid://cw3sqy23kx6mf"]
+
+[ext_resource type="Texture2D" uid="uid://qi4fkvyni1tr" path="res://assets/enemies/rocket/fly/rocket_fly1.png" id="1_48ecu"]
+[ext_resource type="Script" uid="uid://ci76gjudlfxra" path="res://scene/rocket/rocket.gd" id="1_ek2vn"]
+[ext_resource type="Texture2D" uid="uid://dwwjaiiyh027" path="res://assets/player_space_ship/death/ship_death1.png" id="2_66eau"]
+[ext_resource type="Texture2D" uid="uid://bdxln5h5c1xrm" path="res://assets/enemies/rocket/fly/rocket_fly2.png" id="2_ek2vn"]
+[ext_resource type="Texture2D" uid="uid://rlyucba22gyk" path="res://assets/player_space_ship/death/ship_death2.png" id="3_3astr"]
+[ext_resource type="Texture2D" uid="uid://dj2m0gockhojh" path="res://assets/enemies/rocket/fly/rocket_fly3.png" id="3_vasr5"]
+[ext_resource type="Texture2D" uid="uid://cn62xrd3j6s2k" path="res://assets/player_space_ship/death/ship_death3.png" id="4_4qota"]
+[ext_resource type="Texture2D" uid="uid://bcmkjta02jpdj" path="res://assets/enemies/rocket/fly/rocket_fly4.png" id="4_nkj8e"]
+[ext_resource type="Texture2D" uid="uid://cuse8bvmy38kx" path="res://assets/player_space_ship/death/ship_death4.png" id="5_llcja"]
+[ext_resource type="Texture2D" uid="uid://c5nyv1hv0t4r7" path="res://assets/player_space_ship/death/ship_death5.png" id="6_oknjx"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ayih0"]
+radius = 30.0
+height = 144.0
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_hpi1x"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_66eau")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_3astr")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_4qota")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_llcja")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_oknjx")
+}],
+"loop": true,
+"name": &"death",
+"speed": 8.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_48ecu")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_ek2vn")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_vasr5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_nkj8e")
+}],
+"loop": true,
+"name": &"fly",
+"speed": 10.0
+}]
+
+[node name="Rocket" type="RigidBody2D"]
+top_level = true
+collision_layer = 7
+collision_mask = 0
+gravity_scale = 0.0
+script = ExtResource("1_ek2vn")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CapsuleShape2D_ayih0")
+
+[node name="LifeTime" type="Timer" parent="." groups=["enemies"]]
+wait_time = 4.5
+autostart = true
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+rotation = -3.1415925
+scale = Vector2(4, 4)
+sprite_frames = SubResource("SpriteFrames_hpi1x")
+animation = &"fly"
+frame_progress = 0.23817404
+
+[connection signal="timeout" from="LifeTime" to="." method="_on_life_time_timeout"]

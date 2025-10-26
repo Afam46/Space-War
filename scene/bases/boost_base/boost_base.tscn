@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://cpijrbk1ym1oe"]
+
+[ext_resource type="Script" uid="uid://cehd8nkmrv23p" path="res://scene/bases/boost_base/boost_base.gd" id="1_si6qu"]
+
+[node name="BoostBase" type="Area2D"]
+script = ExtResource("1_si6qu")

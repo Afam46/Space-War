@@ -1,0 +1,40 @@
+[gd_scene load_steps=5 format=3 uid="uid://b236r0jrbuf7i"]
+
+[ext_resource type="Script" uid="uid://c0h46i1vy5jm0" path="res://scene/bullet/bullet.gd" id="1_h8gla"]
+[ext_resource type="Texture2D" uid="uid://dstrc8luux06h" path="res://assets/bulllets/player_bullet/fly/bullet_fly4.png" id="2_h8gla"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_cgjbn"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_h8gla")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_tsdkm"]
+size = Vector2(6, 16)
+
+[node name="Bullet" type="RigidBody2D"]
+top_level = true
+collision_layer = 4
+collision_mask = 2
+gravity_scale = 0.0
+script = ExtResource("1_h8gla")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+scale = Vector2(5, 5)
+sprite_frames = SubResource("SpriteFrames_cgjbn")
+animation = &"idle"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -5)
+shape = SubResource("RectangleShape2D_tsdkm")
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+position = Vector2(3, 4)
+rect = Rect2(-6, -17, 6, 16)
+
+[connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]

@@ -1,0 +1,72 @@
+[gd_scene load_steps=14 format=3 uid="uid://64fyupj5d5i4"]
+
+[ext_resource type="Script" uid="uid://b6qfko76vhu4a" path="res://scene/meteor/meteor.gd" id="1_ko37o"]
+[ext_resource type="PackedScene" uid="uid://6d637bpqx4y7" path="res://scene/particles/meteor_spark/meteor_spark.tscn" id="2_21tao"]
+[ext_resource type="PackedScene" uid="uid://c43rdc0wq7t0" path="res://scene/boosts/damage/double_bullet/double_bullet.tscn" id="2_qkojf"]
+[ext_resource type="PackedScene" uid="uid://cd57epv4nk2he" path="res://scene/coin/coin.tscn" id="3_21tao"]
+[ext_resource type="PackedScene" uid="uid://cdjajhkhs6rtb" path="res://scene/boosts/damage/strong_bullet/boost_damage.tscn" id="3_cvm0a"]
+[ext_resource type="Texture2D" uid="uid://cl5v3o7jcnwoy" path="res://assets/enemies/meteor/death/meteor_death1.png" id="3_dsdd6"]
+[ext_resource type="Texture2D" uid="uid://drjk33f10hx7b" path="res://assets/enemies/meteor/death/meteor_death2.png" id="4_jjhvu"]
+[ext_resource type="PackedScene" uid="uid://bh380yv2x1qld" path="res://scene/boosts/health/restoration_of_health.tscn" id="4_mnlq1"]
+[ext_resource type="Texture2D" uid="uid://cr3ne0220cadg" path="res://assets/enemies/meteor/death/meteor_death3.png" id="5_h6wd3"]
+[ext_resource type="Texture2D" uid="uid://dfebqlnmghpwd" path="res://assets/enemies/meteor/death/meteor_death4.png" id="6_nwx88"]
+[ext_resource type="Texture2D" uid="uid://chm71bq6ha0n5" path="res://assets/enemies/meteor/idle/meteor.png" id="7_xmem2"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_wts8j"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_dsdd6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_jjhvu")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_h6wd3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_nwx88")
+}],
+"loop": true,
+"name": &"death",
+"speed": 8.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("7_xmem2")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_bt0d5"]
+radius = 1.9999995
+height = 4.666668
+
+[node name="Meteor" type="RigidBody2D" groups=["enemies"]]
+collision_layer = 3
+collision_mask = 0
+gravity_scale = 0.0
+script = ExtResource("1_ko37o")
+all_boost_scenes = Array[PackedScene]([ExtResource("2_qkojf"), ExtResource("3_cvm0a"), ExtResource("4_mnlq1")])
+particle_scene = ExtResource("2_21tao")
+coin_scene = ExtResource("3_21tao")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+scale = Vector2(3.5, 3.5)
+sprite_frames = SubResource("SpriteFrames_wts8j")
+animation = &"idle"
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+position = Vector2(-12, -6)
+scale = Vector2(3, 3)
+rect = Rect2(-8.333332, -7.333334, 22.333332, 19.666666)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-2, 1)
+rotation = 1.5707964
+scale = Vector2(15, 15)
+shape = SubResource("CapsuleShape2D_bt0d5")
+
+[connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]

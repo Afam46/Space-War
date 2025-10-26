@@ -1,0 +1,40 @@
+[gd_scene load_steps=5 format=3 uid="uid://ea0qclyccpgr"]
+
+[ext_resource type="Script" uid="uid://mh7as161kwq8" path="res://scene/wall1/wall1.gd" id="1_hpo3q"]
+[ext_resource type="Texture2D" uid="uid://ble4lborkjps2" path="res://assets/walls/wall1.png" id="1_tglor"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hpo3q"]
+size = Vector2(99.26874, 32.342434)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_lowyh"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_tglor")
+}],
+"loop": true,
+"name": &"fly",
+"speed": 5.0
+}]
+
+[node name="Wall1" type="RigidBody2D" groups=["enemies"]]
+collision_layer = 3
+collision_mask = 0
+gravity_scale = 0.0
+script = ExtResource("1_hpo3q")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0.87499726, -3.1004808)
+rotation = -0.2617994
+scale = Vector2(0.9999997, 0.9999997)
+shape = SubResource("RectangleShape2D_hpo3q")
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+rect = Rect2(-51, -31, 106, 63)
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+scale = Vector2(3, 3)
+sprite_frames = SubResource("SpriteFrames_lowyh")
+animation = &"fly"
+
+[connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]
