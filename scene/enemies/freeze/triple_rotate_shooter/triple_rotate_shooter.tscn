@@ -1,0 +1,114 @@
+[gd_scene load_steps=25 format=3 uid="uid://b27dktmloygw0"]
+
+[ext_resource type="PackedScene" uid="uid://bqalbxqvp523a" path="res://scene/bases/enemy_base/enemy_base.tscn" id="1_hskmx"]
+[ext_resource type="Texture2D" uid="uid://w64qf1l51pro" path="res://aaasets/death_medium/death1.png" id="2_20j6c"]
+[ext_resource type="Script" uid="uid://ctokhw4mcfro0" path="res://scene/enemies/freeze/triple_rotate_shooter/triple_rotate_shooter.gd" id="2_g3mte"]
+[ext_resource type="PackedScene" uid="uid://dopp5gbm8snd6" path="res://scene/enemies/freeze/enemy_ice_bullet/enemy_ice_bullet.tscn" id="3_dcxlk"]
+[ext_resource type="Texture2D" uid="uid://cnmwmukt4r1ak" path="res://aaasets/death_medium/death2.png" id="3_g3mte"]
+[ext_resource type="Texture2D" uid="uid://dh5yocgdi8fh1" path="res://aaasets/death_medium/death3.png" id="4_dcxlk"]
+[ext_resource type="PackedScene" uid="uid://dtio7stox0bae" path="res://scene/player_scenes/coins/coin_silver/coin_silver.tscn" id="4_o5k7u"]
+[ext_resource type="Texture2D" uid="uid://2dkpggj5qb5c" path="res://aaasets/death_medium/death4.png" id="5_o5k7u"]
+[ext_resource type="Texture2D" uid="uid://cewlqb3ru73vo" path="res://aaasets/death_medium/death5.png" id="6_yy7lv"]
+[ext_resource type="Texture2D" uid="uid://ld5i5ck53kw4" path="res://aaasets/death_medium/death6.png" id="7_p8wx8"]
+[ext_resource type="Texture2D" uid="uid://bjsvo5oiotnl" path="res://aaasets/death_medium/death7.png" id="8_1vbg3"]
+[ext_resource type="Texture2D" uid="uid://bk4v45w5blolg" path="res://aaasets/death_medium/death8.png" id="9_qan73"]
+[ext_resource type="Texture2D" uid="uid://dche0iwpqd83l" path="res://aaasets/death_medium/death9.png" id="10_fmrrv"]
+[ext_resource type="Texture2D" uid="uid://7mqvjpn73a6b" path="res://aaasets/death_medium/death10.png" id="11_j17yy"]
+[ext_resource type="Texture2D" uid="uid://da1whvqxu6sn3" path="res://aaasets/death_medium/death11.png" id="12_tmu1w"]
+[ext_resource type="Texture2D" uid="uid://ccjgp3cmwrx3l" path="res://aaasets/death_medium/death12.png" id="13_cd6ut"]
+[ext_resource type="Texture2D" uid="uid://dwky7kt6q1281" path="res://aaasets/death_medium/death13.png" id="14_x4nnm"]
+[ext_resource type="Texture2D" uid="uid://vfy535u58vwv" path="res://aaasets/enemies/freeze/triple_rotate_shooter/triple_rotate_shooter_fly1.png" id="18_dcxlk"]
+[ext_resource type="Texture2D" uid="uid://iahcagneuo40" path="res://aaasets/enemies/freeze/triple_rotate_shooter/triple_rotate_shooter_fly2.png" id="19_o5k7u"]
+[ext_resource type="Texture2D" uid="uid://fy4x6cnfl6ao" path="res://aaasets/enemies/freeze/triple_rotate_shooter/triple_rotate_shooter_fly3.png" id="20_yy7lv"]
+[ext_resource type="Texture2D" uid="uid://knxechx1pt8s" path="res://aaasets/enemies/freeze/triple_rotate_shooter/triple_rotate_shooter_fly4.png" id="21_p8wx8"]
+[ext_resource type="Texture2D" uid="uid://ce5olddngmqe4" path="res://aaasets/enemies/freeze/triple_rotate_shooter/triple_rotate_shooter_fly5.png" id="22_1vbg3"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_igaua"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_20j6c")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_g3mte")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_dcxlk")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_o5k7u")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_yy7lv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_p8wx8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_1vbg3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_qan73")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_fmrrv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_j17yy")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_tmu1w")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_cd6ut")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_x4nnm")
+}],
+"loop": true,
+"name": &"death",
+"speed": 20.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("18_dcxlk")
+}, {
+"duration": 1.0,
+"texture": ExtResource("19_o5k7u")
+}, {
+"duration": 1.0,
+"texture": ExtResource("20_yy7lv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("21_p8wx8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("22_1vbg3")
+}],
+"loop": true,
+"name": &"fly",
+"speed": 10.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_qan73"]
+radius = 92.0
+
+[node name="TripleRotateShooter" groups=["freezing_enemies"] instance=ExtResource("1_hskmx")]
+script = ExtResource("2_g3mte")
+ice_enemy_bullet_scene = ExtResource("3_dcxlk")
+coin_scene = ExtResource("4_o5k7u")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." index="2"]
+rotation = 3.1415927
+scale = Vector2(4, 4)
+sprite_frames = SubResource("SpriteFrames_igaua")
+animation = &"fly"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." index="3"]
+shape = SubResource("CircleShape2D_qan73")
+
+[node name="Shot" type="Timer" parent="." index="4"]
+wait_time = 3.0
+autostart = true
+
+[connection signal="timeout" from="Shot" to="." method="_on_shot_timeout"]

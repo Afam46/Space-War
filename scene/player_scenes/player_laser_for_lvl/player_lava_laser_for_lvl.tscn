@@ -1,0 +1,67 @@
+[gd_scene load_steps=10 format=3 uid="uid://cdyqb5bx4kksk"]
+
+[ext_resource type="Script" uid="uid://dnm5hxu5kcusf" path="res://scene/player_scenes/player_laser_for_lvl/player_lava_laser_for_lvl.gd" id="1_1m0aq"]
+[ext_resource type="PackedScene" uid="uid://car4oh3m5ct6w" path="res://scene/particles/spark/spark.tscn" id="2_tr6sq"]
+[ext_resource type="Texture2D" uid="uid://bud638v4u0drm" path="res://aaasets/enemies/lava/lava_laser/lava_laser_death1.png" id="3_q5w1x"]
+[ext_resource type="Texture2D" uid="uid://tw2ci6mt3yny" path="res://aaasets/enemies/lava/lava_laser/lava_laser_death2.png" id="4_qse7o"]
+[ext_resource type="Texture2D" uid="uid://b2qkybwygnh8n" path="res://aaasets/enemies/lava/lava_laser/lava_laser_death3.png" id="5_0dhgv"]
+[ext_resource type="Texture2D" uid="uid://bffe72hine3p2" path="res://aaasets/enemies/lava/lava_laser/lava_laser_death4.png" id="6_yb352"]
+[ext_resource type="AudioStream" uid="uid://cqrmgumorsfuy" path="res://aasounds/laser_shot.ogg" id="7_wy50p"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_tr6sq"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_q5w1x")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_qse7o")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_0dhgv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_yb352")
+}],
+"loop": true,
+"name": &"death",
+"speed": 8.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_q5w1x")
+}],
+"loop": true,
+"name": &"fly",
+"speed": 0.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_wy50p"]
+radius = 24.000002
+height = 256.0
+
+[node name="PlayerLavaLaserForLvl" type="Area2D" groups=["boosts"]]
+collision_layer = 4
+collision_mask = 3
+script = ExtResource("1_1m0aq")
+particle_scene = ExtResource("2_tr6sq")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+scale = Vector2(4, 4)
+sprite_frames = SubResource("SpriteFrames_tr6sq")
+animation = &"fly"
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+rect = Rect2(-126, -26, 256, 48)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+rotation = 1.5707964
+shape = SubResource("CapsuleShape2D_wy50p")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("7_wy50p")
+volume_db = -4.0
+autoplay = true
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]

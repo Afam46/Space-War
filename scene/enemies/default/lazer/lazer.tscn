@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://bbir8y6jptycy"]
+
+[ext_resource type="Script" uid="uid://dnci7ps4rgvo2" path="res://scene/enemies/default/lazer/lazer.gd" id="1_w7k4m"]
+[ext_resource type="Texture2D" uid="uid://c1u078hkb8sxs" path="res://aaasets/bullets/laser.png" id="2_w7k4m"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_w7k4m"]
+size = Vector2(24, 2048)
+
+[node name="Lazer" type="RigidBody2D"]
+top_level = true
+collision_layer = 5
+collision_mask = 0
+gravity_scale = 0.0
+script = ExtResource("1_w7k4m")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(4, 4)
+texture = ExtResource("2_w7k4m")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_w7k4m")

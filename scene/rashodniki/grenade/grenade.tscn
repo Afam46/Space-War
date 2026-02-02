@@ -1,0 +1,63 @@
+[gd_scene load_steps=12 format=3 uid="uid://c7qlmijaf0ofb"]
+
+[ext_resource type="Texture2D" uid="uid://b13hhrlwjd3qm" path="res://aaasets/death_small/death1.png" id="1_76xcc"]
+[ext_resource type="Texture2D" uid="uid://dwf43e1k6aykk" path="res://aaasets/items/grenade.png" id="1_v4132"]
+[ext_resource type="Texture2D" uid="uid://kd33af3chnjl" path="res://aaasets/death_small/death2.png" id="2_0utmw"]
+[ext_resource type="Script" uid="uid://bmsbjo300nnrr" path="res://scene/rashodniki/grenade/grenade.gd" id="2_o3yrh"]
+[ext_resource type="Texture2D" uid="uid://cjt0xcv3j8mfw" path="res://aaasets/death_small/death3.png" id="3_cp8f6"]
+[ext_resource type="PackedScene" uid="uid://eojkd7b2nwkn" path="res://scene/rashodniki/grenade/sharp.tscn" id="3_eemjp"]
+[ext_resource type="Texture2D" uid="uid://dovvvfta4g00d" path="res://aaasets/death_small/death4.png" id="4_ags8h"]
+[ext_resource type="Texture2D" uid="uid://c4sbymgehwxn1" path="res://aaasets/death_small/death5.png" id="5_r6dlp"]
+[ext_resource type="Texture2D" uid="uid://bqimh8yeam1e1" path="res://aaasets/death_small/death6.png" id="6_qlhvp"]
+[ext_resource type="PackedScene" uid="uid://cy55rnq6ydyoa" path="res://scene/particles/spark/spark_grenade.tscn" id="10_0utmw"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_iosyo"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_76xcc")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_0utmw")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_cp8f6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_ags8h")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_r6dlp")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_qlhvp")
+}],
+"loop": true,
+"name": &"death",
+"speed": 8.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_v4132")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 0.0
+}]
+
+[node name="Grenade" type="AnimatedSprite2D" groups=["boosts"]]
+top_level = true
+z_index = 10
+scale = Vector2(0.4, 0.4)
+sprite_frames = SubResource("SpriteFrames_iosyo")
+animation = &"idle"
+script = ExtResource("2_o3yrh")
+sharp_scene = ExtResource("3_eemjp")
+spark_grenade_scene = ExtResource("10_0utmw")
+
+[node name="LifeTime" type="Timer" parent="."]
+wait_time = 2.0
+one_shot = true
+autostart = true
+
+[connection signal="timeout" from="LifeTime" to="." method="_on_life_time_timeout"]

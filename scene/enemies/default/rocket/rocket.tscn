@@ -1,0 +1,83 @@
+[gd_scene load_steps=16 format=3 uid="uid://bdvl15fof8cgs"]
+
+[ext_resource type="PackedScene" uid="uid://bqalbxqvp523a" path="res://scene/bases/enemy_base/enemy_base.tscn" id="1_5pegl"]
+[ext_resource type="Script" uid="uid://ci76gjudlfxra" path="res://scene/enemies/default/rocket/rocket.gd" id="2_h47ux"]
+[ext_resource type="Texture2D" uid="uid://b13hhrlwjd3qm" path="res://aaasets/death_small/death1.png" id="2_v5aux"]
+[ext_resource type="Texture2D" uid="uid://kd33af3chnjl" path="res://aaasets/death_small/death2.png" id="3_h47ux"]
+[ext_resource type="Texture2D" uid="uid://cjt0xcv3j8mfw" path="res://aaasets/death_small/death3.png" id="4_mu5mo"]
+[ext_resource type="Texture2D" uid="uid://dovvvfta4g00d" path="res://aaasets/death_small/death4.png" id="5_hxa3b"]
+[ext_resource type="Texture2D" uid="uid://c4sbymgehwxn1" path="res://aaasets/death_small/death5.png" id="6_cbbno"]
+[ext_resource type="Texture2D" uid="uid://bqimh8yeam1e1" path="res://aaasets/death_small/death6.png" id="7_7wdc6"]
+[ext_resource type="Texture2D" uid="uid://co84dtc8xaqkp" path="res://aaasets/enemies/default/rocket/rocket_fly1.png" id="8_mf1f0"]
+[ext_resource type="Texture2D" uid="uid://cs32j1iauxa3c" path="res://aaasets/enemies/default/rocket/rocket_fly2.png" id="9_se1uf"]
+[ext_resource type="Texture2D" uid="uid://cvfypq1ay4g7u" path="res://aaasets/enemies/default/rocket/rocket_fly3.png" id="10_0tgdx"]
+[ext_resource type="Texture2D" uid="uid://dtldsfrc4ajom" path="res://aaasets/enemies/default/rocket/rocket_fly4.png" id="11_c6768"]
+[ext_resource type="Texture2D" uid="uid://dxggw4lj6yj7f" path="res://aaasets/enemies/default/rocket/rocket_fly5.png" id="12_ml3sm"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_iu7cu"]
+radius = 22.0
+height = 124.0
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_2qnpx"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_v5aux")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_h47ux")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_mu5mo")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_hxa3b")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_cbbno")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_7wdc6")
+}],
+"loop": true,
+"name": &"death",
+"speed": 8.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("8_mf1f0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_se1uf")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_0tgdx")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_c6768")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_ml3sm")
+}],
+"loop": true,
+"name": &"fly",
+"speed": 10.0
+}]
+
+[node name="Rocket" groups=["bullets"] instance=ExtResource("1_5pegl")]
+script = ExtResource("2_h47ux")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." index="2"]
+shape = SubResource("CapsuleShape2D_iu7cu")
+
+[node name="LifeTime" type="Timer" parent="." index="3" groups=["enemies"]]
+wait_time = 4.5
+autostart = true
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." index="4"]
+rotation = -3.1415925
+scale = Vector2(4, 4)
+sprite_frames = SubResource("SpriteFrames_2qnpx")
+animation = &"fly"
+
+[connection signal="timeout" from="LifeTime" to="." method="_on_life_time_timeout"]

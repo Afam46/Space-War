@@ -1,0 +1,11 @@
+[gd_scene load_steps=4 format=3 uid="uid://cofaskm487ejg"]
+
+[ext_resource type="PackedScene" uid="uid://cpijrbk1ym1oe" path="res://scene/bases/boost_base/boost_base.tscn" id="1_wc3l1"]
+[ext_resource type="Script" uid="uid://di5kepfm53dlk" path="res://scene/boosts/double_bullet_h/double_bullet_h.gd" id="2_2btax"]
+[ext_resource type="Texture2D" uid="uid://dt3k4g5ett7n5" path="res://icons/icon_double_bullet_h.png" id="2_x3t2e"]
+
+[node name="DoubleBulletH" instance=ExtResource("1_wc3l1")]
+script = ExtResource("2_2btax")
+
+[node name="IconSprite" parent="." index="1"]
+texture = ExtResource("2_x3t2e")

@@ -1,0 +1,104 @@
+[gd_scene load_steps=4 format=3 uid="uid://bbff877i2as7e"]
+
+[ext_resource type="Script" uid="uid://dauccs8dtc2fj" path="res://scene/game/main_menu/main_menu.gd" id="1_o25w2"]
+[ext_resource type="Texture2D" uid="uid://bmmlqpi2oa27u" path="res://aaasets/ui/play8.png" id="2_cds3d"]
+[ext_resource type="Texture2D" uid="uid://bwbob8xagj1ao" path="res://aaasets/ui/shop8.png" id="3_6836v"]
+
+[node name="MainMenu" type="CanvasLayer"]
+script = ExtResource("1_o25w2")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 30
+theme_override_constants/margin_top = 30
+theme_override_constants/margin_right = 30
+theme_override_constants/margin_bottom = 30
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+
+[node name="Button" type="Button" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+text = "clear
+"
+
+[node name="HBoxContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_constants/separation = 24
+
+[node name="Button25" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 36
+text = "Начать с 25 этапа"
+
+[node name="Button50" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 36
+text = "Начать с 50 этапа"
+
+[node name="Button75" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 36
+text = "Начать с 75 этапа"
+
+[node name="Button1" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 36
+text = "Начать с 1 этапа"
+
+[node name="VBoxContainer1" type="VBoxContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 6
+
+[node name="GameName" type="Label" parent="MarginContainer/VBoxContainer/VBoxContainer1"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+theme_override_font_sizes/font_size = 80
+text = "Space War"
+
+[node name="RecordStage" type="Label" parent="MarginContainer/VBoxContainer/VBoxContainer1"]
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 10
+theme_override_font_sizes/font_size = 24
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 3
+theme_override_constants/separation = 50
+
+[node name="StartGame" type="TextureButton" parent="MarginContainer/VBoxContainer/VBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture_normal = ExtResource("2_cds3d")
+
+[node name="Shop" type="TextureButton" parent="MarginContainer/VBoxContainer/VBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 8
+texture_normal = ExtResource("3_6836v")
+
+[node name="Upgrade" type="Button" parent="MarginContainer/VBoxContainer/VBoxContainer2"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 48
+text = "Upgrade"
+
+[connection signal="pressed" from="MarginContainer/VBoxContainer/Button" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/HBoxContainer/Button25" to="." method="_on_button_25_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/HBoxContainer/Button50" to="." method="_on_button_50_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/HBoxContainer/Button75" to="." method="_on_button_75_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/HBoxContainer/Button1" to="." method="_on_button_1_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/VBoxContainer2/StartGame" to="." method="_on_start_game_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/VBoxContainer2/Shop" to="." method="_on_go_gain_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/VBoxContainer2/Upgrade" to="." method="_on_upgrade_pressed"]

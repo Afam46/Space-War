@@ -1,0 +1,28 @@
+[gd_scene load_steps=4 format=3 uid="uid://5831jmxmjebd"]
+
+[ext_resource type="Script" uid="uid://6jjud01xwxpx" path="res://scene/enemies/default/lazer/player_laser.gd" id="2_fhm4x"]
+[ext_resource type="Texture2D" uid="uid://bv0ke0rlu72x0" path="res://aaasets/bullets/player_laser.png" id="2_motav"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_w7k4m"]
+size = Vector2(24, 728)
+
+[node name="PlayerLaser" type="Area2D"]
+top_level = true
+z_index = 2
+collision_layer = 4
+collision_mask = 2
+script = ExtResource("2_fhm4x")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(4, 4)
+texture = ExtResource("2_motav")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_w7k4m")
+
+[node name="HitTimer" type="Timer" parent="."]
+wait_time = 0.35
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]
+[connection signal="timeout" from="HitTimer" to="." method="_on_hit_timer_timeout"]

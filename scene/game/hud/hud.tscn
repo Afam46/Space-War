@@ -1,0 +1,118 @@
+[gd_scene load_steps=6 format=3 uid="uid://cw1go0qsa0x2l"]
+
+[ext_resource type="Script" uid="uid://bdbnmkwp2r4uc" path="res://scene/game/hud/hud.gd" id="1_s3k51"]
+[ext_resource type="Texture2D" uid="uid://c6gjjoyk0hqxc" path="res://aaasets/hp_bar/hp_bar_under.png" id="2_xgihe"]
+[ext_resource type="Script" uid="uid://bi64v32xbdfm4" path="res://scene/game/hud/pause.gd" id="2_yox3p"]
+[ext_resource type="Texture2D" uid="uid://42gqqxx71m0e" path="res://aaasets/hp_bar/hp_bar_over.png" id="3_f28gc"]
+[ext_resource type="Texture2D" uid="uid://npyns7j06x4k" path="res://aaasets/hp_bar/hp_bar_progress.png" id="4_xgihe"]
+
+[node name="HUD" type="CanvasLayer"]
+script = ExtResource("1_s3k51")
+metadata/_edit_horizontal_guides_ = [-198.0]
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 30
+theme_override_constants/margin_top = 30
+theme_override_constants/margin_right = 30
+theme_override_constants/margin_bottom = 30
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 160
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 2
+
+[node name="Stage" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 6
+theme_override_font_sizes/font_size = 64
+text = "Stage 1"
+horizontal_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="Pause" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer2/Stage"]
+process_mode = 3
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -83.0
+offset_top = -44.0
+offset_bottom = 44.0
+grow_horizontal = 0
+grow_vertical = 2
+size_flags_horizontal = 8
+theme_override_font_sizes/font_size = 26
+text = "Pause"
+script = ExtResource("2_yox3p")
+
+[node name="CoinsLabel" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer2/Stage"]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_top = -18.0
+offset_right = 98.0
+offset_bottom = 18.0
+grow_vertical = 2
+theme_override_font_sizes/font_size = 26
+text = "Coins: 0"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 6
+theme_override_constants/separation = 30
+
+[node name="Menu" type="Button" parent="MarginContainer/VBoxContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_font_sizes/font_size = 64
+text = "Menu"
+
+[node name="Restart" type="Button" parent="MarginContainer/VBoxContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_font_sizes/font_size = 64
+text = "Restart"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="HPBar" type="TextureProgressBar" parent="MarginContainer/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(284, 80)
+layout_mode = 2
+size_flags_horizontal = 2
+size_flags_vertical = 8
+max_value = 300.0
+value = 10.0
+nine_patch_stretch = true
+texture_under = ExtResource("2_xgihe")
+texture_over = ExtResource("3_f28gc")
+texture_progress = ExtResource("4_xgihe")
+
+[node name="RBar" type="VBoxContainer" parent="MarginContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 10
+theme_override_constants/separation = 10
+
+[node name="RashodnikCD" type="Timer" parent="."]
+wait_time = 10.0
+one_shot = true
+
+[connection signal="pressed" from="MarginContainer/VBoxContainer/HBoxContainer2/Stage/Pause" to="MarginContainer/VBoxContainer/HBoxContainer2/Stage/Pause" method="_on_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/VBoxContainer/Menu" to="." method="_on_menu_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/VBoxContainer/Restart" to="." method="_on_restart_pressed"]
+[connection signal="timeout" from="RashodnikCD" to="." method="_on_rashodnik_cd_timeout"]

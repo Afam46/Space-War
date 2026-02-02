@@ -1,0 +1,78 @@
+[gd_scene load_steps=11 format=3 uid="uid://cdcvanf7dwyw0"]
+
+[ext_resource type="PackedScene" uid="uid://bqalbxqvp523a" path="res://scene/bases/enemy_base/enemy_base.tscn" id="1_kfgxf"]
+[ext_resource type="Script" uid="uid://b6eewgqoj7jjw" path="res://scene/enemies/bosses/boss10/egg.gd" id="2_0rcyw"]
+[ext_resource type="PackedScene" uid="uid://bsktxno02ldxq" path="res://scene/enemies/bosses/boss10/companion_boss10.tscn" id="3_0rcyw"]
+[ext_resource type="Texture2D" uid="uid://dijv0tu4jm8yt" path="res://aaasets/enemies/bosses/boss10/egg/lava_egg_die1.png" id="3_c4f84"]
+[ext_resource type="Texture2D" uid="uid://bqolhandss418" path="res://aaasets/enemies/bosses/boss10/egg/lava_egg_die2.png" id="4_qqvwm"]
+[ext_resource type="Texture2D" uid="uid://d387j3q4qtdvf" path="res://aaasets/enemies/bosses/boss10/egg/lava_egg_die3.png" id="5_lvrcb"]
+[ext_resource type="Texture2D" uid="uid://dvs3usutt0qyq" path="res://aaasets/enemies/bosses/boss10/egg/lava_egg_die4.png" id="6_r8n55"]
+[ext_resource type="Texture2D" uid="uid://ct6sutuji8rcf" path="res://aaasets/enemies/bosses/boss10/egg/lava_egg_die5.png" id="7_nnc7r"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_q7tut"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("6_r8n55")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_nnc7r")
+}],
+"loop": true,
+"name": &"death",
+"speed": 8.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_c4f84")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 0.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_c4f84")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_qqvwm")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_lvrcb")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_r8n55")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_nnc7r")
+}],
+"loop": true,
+"name": &"spawn",
+"speed": 4.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_kfgxf"]
+radius = 28.0
+height = 72.0
+
+[node name="Egg" groups=["lava_enemies"] instance=ExtResource("1_kfgxf")]
+z_index = 3
+script = ExtResource("2_0rcyw")
+companion_scene = ExtResource("3_0rcyw")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." index="4"]
+scale = Vector2(4, 4)
+sprite_frames = SubResource("SpriteFrames_q7tut")
+animation = &"idle"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." index="5"]
+shape = SubResource("CapsuleShape2D_kfgxf")
+
+[node name="SpawnCompanion" type="Timer" parent="." index="6"]
+wait_time = 3.0
+autostart = true
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="." index="7"]
+rect = Rect2(-28, -36, 56, 72)
+
+[connection signal="timeout" from="SpawnCompanion" to="." method="die"]

@@ -1,0 +1,119 @@
+[gd_scene load_steps=24 format=3 uid="uid://cqb7asw5s7n7p"]
+
+[ext_resource type="PackedScene" uid="uid://bqalbxqvp523a" path="res://scene/bases/enemy_base/enemy_base.tscn" id="1_uxqoy"]
+[ext_resource type="Texture2D" uid="uid://w64qf1l51pro" path="res://aaasets/death_medium/death1.png" id="2_qg8mc"]
+[ext_resource type="Script" uid="uid://bnupo71i6atrx" path="res://scene/enemies/lava/lava_crab/lava_crab.gd" id="2_vcbaq"]
+[ext_resource type="Texture2D" uid="uid://cnmwmukt4r1ak" path="res://aaasets/death_medium/death2.png" id="3_vcbaq"]
+[ext_resource type="PackedScene" uid="uid://dprodurxendwn" path="res://scene/player_scenes/coins/coin_gold/coin_gold.tscn" id="3_ylv5d"]
+[ext_resource type="Texture2D" uid="uid://dh5yocgdi8fh1" path="res://aaasets/death_medium/death3.png" id="4_ylv5d"]
+[ext_resource type="Texture2D" uid="uid://2dkpggj5qb5c" path="res://aaasets/death_medium/death4.png" id="5_v0n6k"]
+[ext_resource type="Texture2D" uid="uid://cewlqb3ru73vo" path="res://aaasets/death_medium/death5.png" id="6_ff7jm"]
+[ext_resource type="Texture2D" uid="uid://ld5i5ck53kw4" path="res://aaasets/death_medium/death6.png" id="7_3khpm"]
+[ext_resource type="Texture2D" uid="uid://bjsvo5oiotnl" path="res://aaasets/death_medium/death7.png" id="8_m87sj"]
+[ext_resource type="Texture2D" uid="uid://bk4v45w5blolg" path="res://aaasets/death_medium/death8.png" id="9_3utto"]
+[ext_resource type="Texture2D" uid="uid://dche0iwpqd83l" path="res://aaasets/death_medium/death9.png" id="10_k5wxe"]
+[ext_resource type="Texture2D" uid="uid://7mqvjpn73a6b" path="res://aaasets/death_medium/death10.png" id="11_6c038"]
+[ext_resource type="Texture2D" uid="uid://da1whvqxu6sn3" path="res://aaasets/death_medium/death11.png" id="12_2e0fw"]
+[ext_resource type="Texture2D" uid="uid://ccjgp3cmwrx3l" path="res://aaasets/death_medium/death12.png" id="13_wf18t"]
+[ext_resource type="Texture2D" uid="uid://dwky7kt6q1281" path="res://aaasets/death_medium/death13.png" id="14_yoyma"]
+[ext_resource type="Texture2D" uid="uid://burdtayjjqjvd" path="res://aaasets/enemies/lava/lava_crab/lava_crab_fly1.png" id="15_xqmrt"]
+[ext_resource type="Texture2D" uid="uid://dcdsuhfnaejll" path="res://aaasets/enemies/lava/lava_crab/lava_crab_fly2.png" id="16_j0lsd"]
+[ext_resource type="Texture2D" uid="uid://obsmtftgtfph" path="res://aaasets/enemies/lava/lava_crab/lava_crab_fly3.png" id="17_wis0v"]
+[ext_resource type="Texture2D" uid="uid://dayk3u5no6n24" path="res://aaasets/enemies/lava/lava_crab/lava_crab_fly4.png" id="18_hjjom"]
+[ext_resource type="Texture2D" uid="uid://d0ygnwywywjpj" path="res://aaasets/enemies/lava/lava_crab/lava_crab_fly5.png" id="19_k0o4q"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_t34tt"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_qg8mc")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_vcbaq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_ylv5d")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_v0n6k")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_ff7jm")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_3khpm")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_m87sj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_3utto")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_k5wxe")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_6c038")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_2e0fw")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_wf18t")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_yoyma")
+}],
+"loop": true,
+"name": &"death",
+"speed": 20.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("15_xqmrt")
+}, {
+"duration": 1.0,
+"texture": ExtResource("16_j0lsd")
+}, {
+"duration": 1.0,
+"texture": ExtResource("17_wis0v")
+}, {
+"duration": 1.0,
+"texture": ExtResource("18_hjjom")
+}, {
+"duration": 1.0,
+"texture": ExtResource("19_k0o4q")
+}],
+"loop": true,
+"name": &"fly",
+"speed": 8.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_m0ndl"]
+radius = 56.0
+height = 194.0
+
+[node name="LavaCrab" groups=["lava_enemies"] instance=ExtResource("1_uxqoy")]
+script = ExtResource("2_vcbaq")
+coin_scene = ExtResource("3_ylv5d")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." index="4"]
+rotation = 3.1415927
+scale = Vector2(4, 4)
+sprite_frames = SubResource("SpriteFrames_t34tt")
+animation = &"fly"
+frame = 2
+frame_progress = 0.80255574
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." index="5"]
+shape = SubResource("CapsuleShape2D_m0ndl")
+
+[node name="Dash" type="Timer" parent="." index="6"]
+wait_time = 5.0
+autostart = true
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="." index="7"]
+rect = Rect2(-56, -97, 112, 193)
+
+[connection signal="timeout" from="Dash" to="." method="_on_dash_timeout"]
+[connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]

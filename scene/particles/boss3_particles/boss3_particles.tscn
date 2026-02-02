@@ -1,0 +1,27 @@
+[gd_scene load_steps=5 format=3 uid="uid://ckgmehjvlyq58"]
+
+[ext_resource type="Texture2D" uid="uid://4w4xokcyouiw" path="res://aaasets/enemies/bosses/boss3/boss3_particles.png" id="1_mpdlf"]
+
+[sub_resource type="Curve" id="Curve_mpdlf"]
+_data = [Vector2(0.007352948, 0.97752815), 0.0, 0.0, 0, 0, Vector2(1, 0.34831464), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_804o5"]
+curve = SubResource("Curve_mpdlf")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_804o5"]
+particle_flag_disable_z = true
+direction = Vector3(0, 0, 0)
+spread = 180.0
+initial_velocity_min = 10.0
+initial_velocity_max = 200.0
+gravity = Vector3(0, 90, 0)
+scale_min = 4.0
+scale_max = 6.0
+scale_curve = SubResource("CurveTexture_804o5")
+
+[node name="MeteorSpark" type="GPUParticles2D"]
+top_level = true
+amount = 1
+texture = ExtResource("1_mpdlf")
+process_material = SubResource("ParticleProcessMaterial_804o5")

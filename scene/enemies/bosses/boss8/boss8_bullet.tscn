@@ -1,0 +1,27 @@
+[gd_scene load_steps=4 format=3 uid="uid://cu04nrxj20crn"]
+
+[ext_resource type="Script" uid="uid://b5nj6kfoi5ex" path="res://scene/enemies/bosses/boss8/boss_8_bullet.gd" id="1_2xgkf"]
+[ext_resource type="Texture2D" uid="uid://b3oarcurjulv4" path="res://aaasets/enemies/bosses/boss8/boss8_1/boss8_bullet.png" id="2_2xgkf"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bowgu"]
+size = Vector2(68, 28)
+
+[node name="Boss8Bullet" type="RigidBody2D" groups=["bullets", "freezing_enemies"]]
+collision_layer = 5
+collision_mask = 0
+gravity_scale = 0.0
+script = ExtResource("1_2xgkf")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+rotation = 3.1415927
+scale = Vector2(4, 4)
+texture = ExtResource("2_2xgkf")
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+rect = Rect2(-34, -16, 68, 32)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 2)
+shape = SubResource("RectangleShape2D_bowgu")
+
+[connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]

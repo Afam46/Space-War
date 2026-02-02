@@ -1,0 +1,11 @@
+[gd_scene load_steps=4 format=3 uid="uid://bd0psbkpgl2"]
+
+[ext_resource type="PackedScene" uid="uid://cpijrbk1ym1oe" path="res://scene/bases/boost_base/boost_base.tscn" id="1_nsre2"]
+[ext_resource type="Script" uid="uid://be4ycckupitun" path="res://scene/boosts/laser_bullet/laser_bullet.gd" id="2_vbxy4"]
+[ext_resource type="Texture2D" uid="uid://babevoq0evubw" path="res://icons/icon_laser.png" id="3_887nk"]
+
+[node name="LaserBullet" instance=ExtResource("1_nsre2")]
+script = ExtResource("2_vbxy4")
+
+[node name="IconSprite" parent="." index="1"]
+texture = ExtResource("3_887nk")

@@ -1,0 +1,69 @@
+[gd_scene load_steps=12 format=3 uid="uid://co316ly38uwuy"]
+
+[ext_resource type="PackedScene" uid="uid://bqalbxqvp523a" path="res://scene/bases/enemy_base/enemy_base.tscn" id="1_5ikbl"]
+[ext_resource type="Script" uid="uid://b6qfko76vhu4a" path="res://scene/enemies/default/meteor/meteor.gd" id="2_0xhg7"]
+[ext_resource type="PackedScene" uid="uid://6d637bpqx4y7" path="res://scene/particles/meteor_spark/meteor_spark.tscn" id="2_21tao"]
+[ext_resource type="Texture2D" uid="uid://b6nk018rgl340" path="res://aaasets/enemies/default/meteor/meteor_death2.png" id="3_0xhg7"]
+[ext_resource type="Texture2D" uid="uid://bno154ls185wo" path="res://aaasets/enemies/default/meteor/meteor_death3.png" id="4_ykys2"]
+[ext_resource type="Texture2D" uid="uid://c3tsy3isy1hg2" path="res://aaasets/enemies/default/meteor/meteor_death4.png" id="5_4nthy"]
+[ext_resource type="Texture2D" uid="uid://io16eapvse3d" path="res://aaasets/enemies/default/meteor/meteor_death5.png" id="6_6rhwq"]
+[ext_resource type="Texture2D" uid="uid://cools1aub6tx3" path="res://aaasets/enemies/default/meteor/meteor_death6.png" id="7_c8ywg"]
+[ext_resource type="Texture2D" uid="uid://bcio4ey3pgev" path="res://aaasets/enemies/default/meteor/meteor.png" id="8_4meln"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_55at5"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_0xhg7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_ykys2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_4nthy")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_6rhwq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_c8ywg")
+}],
+"loop": true,
+"name": &"death",
+"speed": 8.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("8_4meln")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_y71mx"]
+radius = 3.335999
+
+[node name="Meteor" instance=ExtResource("1_5ikbl")]
+collision_layer = 3
+collision_mask = 0
+script = ExtResource("2_0xhg7")
+particle_scene = ExtResource("2_21tao")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." index="2"]
+scale = Vector2(4, 4)
+sprite_frames = SubResource("SpriteFrames_55at5")
+animation = &"idle"
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="." index="3"]
+position = Vector2(-12, -6)
+scale = Vector2(3, 3)
+rect = Rect2(-13.333334, -14, 33.333336, 32)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." index="4"]
+position = Vector2(-2, 1)
+rotation = 1.5707964
+scale = Vector2(15, 15)
+shape = SubResource("CircleShape2D_y71mx")
+
+[connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]

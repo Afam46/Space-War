@@ -1,0 +1,28 @@
+[gd_scene load_steps=5 format=3 uid="uid://b6yqdl5s2s3hx"]
+
+[ext_resource type="Texture2D" uid="uid://b2vwkb1vo3kij" path="res://aaasets/items/smoke_grenade.png" id="1_wwxy4"]
+[ext_resource type="Script" uid="uid://crspq0gior7pd" path="res://scene/rashodniki/smoke_grenade/smoke_grenade.gd" id="2_i87of"]
+[ext_resource type="PackedScene" uid="uid://c6c21jyu8kggw" path="res://scene/particles/smoke/smoke.tscn" id="3_i87of"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_i87of"]
+radius = 360.0
+
+[node name="SmokeGrenade" type="Sprite2D" groups=["boosts"]]
+top_level = true
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("1_wwxy4")
+script = ExtResource("2_i87of")
+smoke_particles = ExtResource("3_i87of")
+
+[node name="SpawnSmoke" type="Timer" parent="."]
+wait_time = 2.0
+one_shot = true
+autostart = true
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_i87of")
+
+[connection signal="timeout" from="SpawnSmoke" to="." method="_on_spawn_smoke_timeout"]
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

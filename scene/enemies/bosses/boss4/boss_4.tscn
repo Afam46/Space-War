@@ -1,0 +1,125 @@
+[gd_scene load_steps=26 format=3 uid="uid://dqw0p2vcqn1ba"]
+
+[ext_resource type="PackedScene" uid="uid://bqalbxqvp523a" path="res://scene/bases/enemy_base/enemy_base.tscn" id="1_64mjb"]
+[ext_resource type="Script" uid="uid://bw7bmr81gc41m" path="res://scene/enemies/bosses/boss4/boss_4.gd" id="2_qhcbk"]
+[ext_resource type="PackedScene" uid="uid://d0jglui7ebedu" path="res://scene/enemies/default/magma_bullets/magma_bullet.tscn" id="3_xqfdv"]
+[ext_resource type="PackedScene" uid="uid://c5fwx63641ljm" path="res://scene/enemies/default/magma_shooter/magma_shooter.tscn" id="4_wyv1o"]
+[ext_resource type="PackedScene" uid="uid://dtio7stox0bae" path="res://scene/player_scenes/coins/coin_silver/coin_silver.tscn" id="5_bwpef"]
+[ext_resource type="Texture2D" uid="uid://w64qf1l51pro" path="res://aaasets/death_medium/death1.png" id="5_wyv1o"]
+[ext_resource type="Texture2D" uid="uid://cnmwmukt4r1ak" path="res://aaasets/death_medium/death2.png" id="6_bwpef"]
+[ext_resource type="Texture2D" uid="uid://dh5yocgdi8fh1" path="res://aaasets/death_medium/death3.png" id="7_c0ew7"]
+[ext_resource type="Texture2D" uid="uid://2dkpggj5qb5c" path="res://aaasets/death_medium/death4.png" id="8_l4aly"]
+[ext_resource type="Texture2D" uid="uid://cewlqb3ru73vo" path="res://aaasets/death_medium/death5.png" id="9_m5ql6"]
+[ext_resource type="Texture2D" uid="uid://ld5i5ck53kw4" path="res://aaasets/death_medium/death6.png" id="10_ghamg"]
+[ext_resource type="Texture2D" uid="uid://bjsvo5oiotnl" path="res://aaasets/death_medium/death7.png" id="11_cnbgb"]
+[ext_resource type="Texture2D" uid="uid://bk4v45w5blolg" path="res://aaasets/death_medium/death8.png" id="12_ack21"]
+[ext_resource type="Texture2D" uid="uid://dche0iwpqd83l" path="res://aaasets/death_medium/death9.png" id="13_kb3jq"]
+[ext_resource type="Texture2D" uid="uid://7mqvjpn73a6b" path="res://aaasets/death_medium/death10.png" id="14_pgdjw"]
+[ext_resource type="Texture2D" uid="uid://da1whvqxu6sn3" path="res://aaasets/death_medium/death11.png" id="15_87gvy"]
+[ext_resource type="Texture2D" uid="uid://ccjgp3cmwrx3l" path="res://aaasets/death_medium/death12.png" id="16_ei4ij"]
+[ext_resource type="Texture2D" uid="uid://dwky7kt6q1281" path="res://aaasets/death_medium/death13.png" id="17_lf3xh"]
+[ext_resource type="Texture2D" uid="uid://bl042x4xkih5p" path="res://aaasets/enemies/bosses/boss4/boss4_fly1.png" id="18_ifi2s"]
+[ext_resource type="Texture2D" uid="uid://43vghkq2hk1u" path="res://aaasets/enemies/bosses/boss4/boss4_fly2.png" id="19_mf4bv"]
+[ext_resource type="Texture2D" uid="uid://behsbj13scgri" path="res://aaasets/enemies/bosses/boss4/boss4_fly3.png" id="20_28bf8"]
+[ext_resource type="Texture2D" uid="uid://d1l0g735jp0ab" path="res://aaasets/enemies/bosses/boss4/boss4_fly4.png" id="21_00ib5"]
+[ext_resource type="Texture2D" uid="uid://c5kfxa8725oee" path="res://aaasets/enemies/bosses/boss4/boss4_fly5.png" id="22_rbl5m"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_53nyb"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_wyv1o")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_bwpef")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_c0ew7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_l4aly")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_m5ql6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_ghamg")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_cnbgb")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_ack21")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_kb3jq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_pgdjw")
+}, {
+"duration": 1.0,
+"texture": ExtResource("15_87gvy")
+}, {
+"duration": 1.0,
+"texture": ExtResource("16_ei4ij")
+}, {
+"duration": 1.0,
+"texture": ExtResource("17_lf3xh")
+}],
+"loop": true,
+"name": &"death",
+"speed": 20.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("18_ifi2s")
+}, {
+"duration": 1.0,
+"texture": ExtResource("19_mf4bv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("20_28bf8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("21_00ib5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("22_rbl5m")
+}],
+"loop": true,
+"name": &"fly",
+"speed": 10.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_siqjn"]
+radius = 110.0
+height = 252.0
+
+[node name="Boss4" groups=["bosses"] instance=ExtResource("1_64mjb")]
+collision_layer = 3
+collision_mask = 0
+script = ExtResource("2_qhcbk")
+magma_bullet_scene = ExtResource("3_xqfdv")
+magma_shooter_scene = ExtResource("4_wyv1o")
+coin_scene = ExtResource("5_bwpef")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." index="0"]
+rotation = 3.1415927
+scale = Vector2(4, 4)
+sprite_frames = SubResource("SpriteFrames_53nyb")
+animation = &"fly"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." index="1"]
+rotation = 1.5707964
+shape = SubResource("CapsuleShape2D_siqjn")
+
+[node name="Shot" type="Timer" parent="." index="3"]
+wait_time = 2.0
+autostart = true
+
+[node name="SpawnOneShooter" type="Timer" parent="." index="4"]
+wait_time = 10.0
+autostart = true
+
+[connection signal="timeout" from="Shot" to="." method="_on_shot_timeout"]
+[connection signal="timeout" from="SpawnOneShooter" to="." method="_on_spawn_one_shooter_timeout"]

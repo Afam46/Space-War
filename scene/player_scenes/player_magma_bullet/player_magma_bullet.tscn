@@ -1,0 +1,63 @@
+[gd_scene load_steps=11 format=3 uid="uid://e8lr7ts31245"]
+
+[ext_resource type="Script" uid="uid://dehy82ynhuhqx" path="res://scene/player_scenes/player_magma_bullet/player_magma_bullet.gd" id="1_awdmd"]
+[ext_resource type="PackedScene" uid="uid://4rmmo5spxxj2" path="res://scene/player_scenes/player_magma_bullet/player_small_magma_bullet.tscn" id="2_6squp"]
+[ext_resource type="Texture2D" uid="uid://dic644b5jbhdv" path="res://aaasets/bullets/magma_bullet/magma_bullet_create1.png" id="3_jtlbe"]
+[ext_resource type="Texture2D" uid="uid://beff8dopp5j1u" path="res://aaasets/bullets/magma_bullet/magma_bullet_create2.png" id="4_sstwt"]
+[ext_resource type="Texture2D" uid="uid://d2ehxdffvqyms" path="res://aaasets/bullets/magma_bullet/magma_bullet_create3.png" id="5_oypwi"]
+[ext_resource type="Texture2D" uid="uid://c68hpod7irrqj" path="res://aaasets/bullets/magma_bullet/magma_bullet_create4.png" id="6_bt63s"]
+[ext_resource type="Texture2D" uid="uid://c81p8isela3vy" path="res://aaasets/bullets/magma_bullet/magma_bullet_create5.png" id="7_rdpvm"]
+[ext_resource type="Texture2D" uid="uid://ci1s5m07e76ak" path="res://aaasets/bullets/magma_bullet/magma_bullet.png" id="8_0f4jj"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_0f4jj"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_jtlbe")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_sstwt")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_oypwi")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_bt63s")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_rdpvm")
+}],
+"loop": true,
+"name": &"create",
+"speed": 8.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("8_0f4jj")
+}],
+"loop": true,
+"name": &"fly",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_f77ec"]
+radius = 20.024984
+
+[node name="PlayerMagmaBullet" type="Area2D"]
+top_level = true
+script = ExtResource("1_awdmd")
+small_magma_bullet_scene = ExtResource("2_6squp")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+scale = Vector2(4, 4)
+sprite_frames = SubResource("SpriteFrames_0f4jj")
+animation = &"fly"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_f77ec")
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+rect = Rect2(-20, -20, 40, 40)
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]

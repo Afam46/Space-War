@@ -1,0 +1,160 @@
+[gd_scene load_steps=34 format=3 uid="uid://drlnht1o3ebgo"]
+
+[ext_resource type="PackedScene" uid="uid://bqalbxqvp523a" path="res://scene/bases/enemy_base/enemy_base.tscn" id="1_umiii"]
+[ext_resource type="Script" uid="uid://yx4i3uwf2t87" path="res://scene/enemies/enemy_bases/base1/base_1.gd" id="2_l0qbf"]
+[ext_resource type="Texture2D" uid="uid://bgto3ftwpixli" path="res://aaasets/enemies/bases/base1/base1.png" id="2_qqlv1"]
+[ext_resource type="PackedScene" uid="uid://cq0aedy343w1e" path="res://scene/enemies/default/one_shooter/one_shooter.tscn" id="3_l0qbf"]
+[ext_resource type="PackedScene" uid="uid://d1e70avqii58c" path="res://scene/enemies/default/nlo/nlo.tscn" id="4_y3iph"]
+[ext_resource type="PackedScene" uid="uid://c5fwx63641ljm" path="res://scene/enemies/default/magma_shooter/magma_shooter.tscn" id="5_uttpe"]
+[ext_resource type="PackedScene" uid="uid://dyqrihlb5rgst" path="res://scene/enemies/default/electro_shooter/electro_shooter.tscn" id="6_f00xn"]
+[ext_resource type="PackedScene" uid="uid://co316ly38uwuy" path="res://scene/enemies/default/meteor/meteor.tscn" id="7_f00xn"]
+[ext_resource type="PackedScene" uid="uid://b480it55qe461" path="res://scene/player_scenes/coins/coin_brilliant/coin_brilliant.tscn" id="8_k70sn"]
+[ext_resource type="PackedScene" uid="uid://dtio7stox0bae" path="res://scene/player_scenes/coins/coin_silver/coin_silver.tscn" id="9_5jwvb"]
+[ext_resource type="Texture2D" uid="uid://byy540imrsg51" path="res://aaasets/death_big/death1.png" id="10_u8wew"]
+[ext_resource type="Texture2D" uid="uid://bfh1lqqa6t6c4" path="res://aaasets/death_big/death2.png" id="11_hv84t"]
+[ext_resource type="Texture2D" uid="uid://brvdeersu0aud" path="res://aaasets/death_big/death3.png" id="12_ney50"]
+[ext_resource type="Texture2D" uid="uid://jninaaa04w40" path="res://aaasets/death_big/death4.png" id="13_bwwr6"]
+[ext_resource type="Texture2D" uid="uid://ctglb80f6ivlp" path="res://aaasets/death_big/death5.png" id="14_c0m58"]
+[ext_resource type="Texture2D" uid="uid://bl1l0rxf7pps0" path="res://aaasets/death_big/death6.png" id="15_i5cjm"]
+[ext_resource type="Texture2D" uid="uid://c6h3wti8oydwf" path="res://aaasets/death_big/death7.png" id="16_8jm8c"]
+[ext_resource type="Texture2D" uid="uid://ducqxnx8pp8bg" path="res://aaasets/death_big/death8.png" id="17_ko4n6"]
+[ext_resource type="Texture2D" uid="uid://ckt55u11ncgdc" path="res://aaasets/death_big/death9.png" id="18_1o36k"]
+[ext_resource type="Texture2D" uid="uid://cg5ivhs321h21" path="res://aaasets/death_big/death10.png" id="19_d82qe"]
+[ext_resource type="Texture2D" uid="uid://gygsx68cgi2e" path="res://aaasets/death_big/death11.png" id="20_a6jug"]
+[ext_resource type="Texture2D" uid="uid://dbkpoyam4wnlk" path="res://aaasets/death_big/death12.png" id="21_kuymp"]
+[ext_resource type="Texture2D" uid="uid://b3rl3l2n4as2n" path="res://aaasets/death_big/death13.png" id="22_f33qn"]
+[ext_resource type="Texture2D" uid="uid://cb0ugtfdmd43x" path="res://aaasets/death_big/death14.png" id="23_npnwf"]
+[ext_resource type="Texture2D" uid="uid://c51sun3htm0ax" path="res://aaasets/death_big/death15.png" id="24_alf87"]
+[ext_resource type="Texture2D" uid="uid://cd0sprwutngv6" path="res://aaasets/death_big/death16.png" id="25_x5uhe"]
+[ext_resource type="Texture2D" uid="uid://bbooeqibq5qfw" path="res://aaasets/death_big/death17.png" id="26_dbp6k"]
+[ext_resource type="Texture2D" uid="uid://dnr5binjbsef7" path="res://aaasets/death_big/death18.png" id="27_buen2"]
+[ext_resource type="Texture2D" uid="uid://dj0raxmxphrdy" path="res://aaasets/death_big/death19.png" id="28_8ja8s"]
+[ext_resource type="Texture2D" uid="uid://cbhlyr3fpjerc" path="res://aaasets/death_big/death20.png" id="29_qboo6"]
+[ext_resource type="Texture2D" uid="uid://b8s5ig5sxluau" path="res://aaasets/death_big/death21.png" id="30_uxfyd"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_l0qbf"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("10_u8wew")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_hv84t")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_ney50")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_bwwr6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_c0m58")
+}, {
+"duration": 1.0,
+"texture": ExtResource("15_i5cjm")
+}, {
+"duration": 1.0,
+"texture": ExtResource("16_8jm8c")
+}, {
+"duration": 1.0,
+"texture": ExtResource("17_ko4n6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("18_1o36k")
+}, {
+"duration": 1.0,
+"texture": ExtResource("19_d82qe")
+}, {
+"duration": 1.0,
+"texture": ExtResource("20_a6jug")
+}, {
+"duration": 1.0,
+"texture": ExtResource("21_kuymp")
+}, {
+"duration": 1.0,
+"texture": ExtResource("22_f33qn")
+}, {
+"duration": 1.0,
+"texture": ExtResource("23_npnwf")
+}, {
+"duration": 1.0,
+"texture": ExtResource("24_alf87")
+}, {
+"duration": 1.0,
+"texture": ExtResource("25_x5uhe")
+}, {
+"duration": 1.0,
+"texture": ExtResource("26_dbp6k")
+}, {
+"duration": 1.0,
+"texture": ExtResource("27_buen2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("28_8ja8s")
+}, {
+"duration": 1.0,
+"texture": ExtResource("29_qboo6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("30_uxfyd")
+}],
+"loop": true,
+"name": &"death",
+"speed": 20.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_qqlv1")
+}],
+"loop": true,
+"name": &"fly",
+"speed": 0.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_umiii"]
+size = Vector2(495, 292)
+
+[node name="Base1" groups=["bosses"] instance=ExtResource("1_umiii")]
+script = ExtResource("2_l0qbf")
+all_enemy_scenes = Array[PackedScene]([ExtResource("3_l0qbf"), ExtResource("4_y3iph"), ExtResource("5_uttpe"), ExtResource("6_f00xn")])
+spawn_points = Array[NodePath]([NodePath("Spawn1"), NodePath("Spawn2"), NodePath("Spawn3"), NodePath("Spawn4")])
+meteor_scene = ExtResource("7_f00xn")
+brilliant_scene = ExtResource("8_k70sn")
+coin_scene = ExtResource("9_5jwvb")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." index="0"]
+scale = Vector2(4, 4)
+sprite_frames = SubResource("SpriteFrames_l0qbf")
+animation = &"fly"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." index="1"]
+position = Vector2(0.5, -60)
+shape = SubResource("RectangleShape2D_umiii")
+
+[node name="SpawnTimer" type="Timer" parent="." index="2"]
+wait_time = 25.0
+autostart = true
+
+[node name="Spawn1" type="Marker2D" parent="." index="3"]
+position = Vector2(244, 0)
+
+[node name="Spawn2" type="Marker2D" parent="." index="4"]
+
+[node name="Spawn3" type="Marker2D" parent="." index="5"]
+position = Vector2(-247, 0)
+
+[node name="Spawn4" type="Marker2D" parent="." index="6"]
+position = Vector2(0, 141)
+
+[node name="FirstSpawnTimer" type="Timer" parent="." index="7"]
+wait_time = 5.0
+one_shot = true
+autostart = true
+
+[node name="SpawnMeteor" type="Timer" parent="." index="8"]
+wait_time = 10.0
+autostart = true
+
+[connection signal="timeout" from="SpawnTimer" to="." method="_on_spawn_timer_timeout"]
+[connection signal="timeout" from="FirstSpawnTimer" to="." method="_on_first_spawn_timer_timeout"]
+[connection signal="timeout" from="SpawnMeteor" to="." method="_on_spawn_meteor_timeout"]

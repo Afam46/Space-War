@@ -1,6 +1,33 @@
-[gd_scene load_steps=2 format=3 uid="uid://bqalbxqvp523a"]
+[gd_scene load_steps=6 format=3 uid="uid://bqalbxqvp523a"]
 
 [ext_resource type="Script" uid="uid://c1cjsoktbtif6" path="res://scene/bases/enemy_base/enemy_base.gd" id="1_11vwo"]
+[ext_resource type="PackedScene" uid="uid://car4oh3m5ct6w" path="res://scene/particles/spark/spark.tscn" id="2_1owxp"]
+[ext_resource type="PackedScene" uid="uid://cd57epv4nk2he" path="res://scene/player_scenes/coins/coin_bronze/coin_bronze.tscn" id="3_r5gny"]
+[ext_resource type="PackedScene" uid="uid://baf87b7lxqaov" path="res://scene/particles/freeze/freeze.tscn" id="4_1owxp"]
+[ext_resource type="PackedScene" uid="uid://d42nw71d0b5p" path="res://scene/game/damage_number.tscn" id="5_r5gny"]
 
-[node name="EnemyBase" type="RigidBody2D"]
+[node name="EnemyBase" type="RigidBody2D" groups=["enemies"]]
+collision_layer = 3
+collision_mask = 0
+gravity_scale = 0.0
 script = ExtResource("1_11vwo")
+particle_scene = ExtResource("2_1owxp")
+coin_scene = ExtResource("3_r5gny")
+freeze_particle_scene = ExtResource("4_1owxp")
+damage_number_scene = ExtResource("5_r5gny")
+
+[node name="FreezeTimer" type="Timer" parent="."]
+wait_time = 3.0
+one_shot = true
+
+[node name="FullFreezeTimer" type="Timer" parent="."]
+wait_time = 5.0
+one_shot = true
+
+[node name="Death" type="AudioStreamPlayer2D" parent="."]
+volume_db = 20.0
+
+[node name="HitSound" type="AudioStreamPlayer2D" parent="."]
+
+[connection signal="timeout" from="FreezeTimer" to="." method="_on_FreezeTimer_timeout"]
+[connection signal="timeout" from="FullFreezeTimer" to="." method="_on_FullFreezeTimer_timeout"]

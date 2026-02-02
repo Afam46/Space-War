@@ -1,0 +1,103 @@
+[gd_scene load_steps=20 format=3 uid="uid://hevnnm5oiwyh"]
+
+[ext_resource type="PackedScene" uid="uid://bqalbxqvp523a" path="res://scene/bases/enemy_base/enemy_base.tscn" id="1_52fay"]
+[ext_resource type="Script" uid="uid://bto0qvqebav2" path="res://scene/enemies/bosses/boss2/boss_2.gd" id="2_5kjbs"]
+[ext_resource type="PackedScene" uid="uid://dtio7stox0bae" path="res://scene/player_scenes/coins/coin_silver/coin_silver.tscn" id="3_k6beb"]
+[ext_resource type="Texture2D" uid="uid://w64qf1l51pro" path="res://aaasets/death_medium/death1.png" id="3_rq1p6"]
+[ext_resource type="Texture2D" uid="uid://cnmwmukt4r1ak" path="res://aaasets/death_medium/death2.png" id="4_k6beb"]
+[ext_resource type="Texture2D" uid="uid://dh5yocgdi8fh1" path="res://aaasets/death_medium/death3.png" id="5_cm7a8"]
+[ext_resource type="Texture2D" uid="uid://2dkpggj5qb5c" path="res://aaasets/death_medium/death4.png" id="6_l36kj"]
+[ext_resource type="Texture2D" uid="uid://cewlqb3ru73vo" path="res://aaasets/death_medium/death5.png" id="7_jknod"]
+[ext_resource type="Texture2D" uid="uid://ld5i5ck53kw4" path="res://aaasets/death_medium/death6.png" id="8_f83m0"]
+[ext_resource type="Texture2D" uid="uid://d3jiwymqfn2qw" path="res://aaasets/enemies/bosses/boss2/boss2.png" id="8_ngivp"]
+[ext_resource type="Texture2D" uid="uid://bjsvo5oiotnl" path="res://aaasets/death_medium/death7.png" id="9_bnvc5"]
+[ext_resource type="Texture2D" uid="uid://bk4v45w5blolg" path="res://aaasets/death_medium/death8.png" id="10_q28wb"]
+[ext_resource type="Texture2D" uid="uid://dche0iwpqd83l" path="res://aaasets/death_medium/death9.png" id="11_t5s16"]
+[ext_resource type="Texture2D" uid="uid://7mqvjpn73a6b" path="res://aaasets/death_medium/death10.png" id="12_ohcey"]
+[ext_resource type="Texture2D" uid="uid://da1whvqxu6sn3" path="res://aaasets/death_medium/death11.png" id="13_tepms"]
+[ext_resource type="Texture2D" uid="uid://ccjgp3cmwrx3l" path="res://aaasets/death_medium/death12.png" id="14_0immr"]
+[ext_resource type="Texture2D" uid="uid://dwky7kt6q1281" path="res://aaasets/death_medium/death13.png" id="15_u23nc"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ngivp"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_rq1p6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_k6beb")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_cm7a8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_l36kj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_jknod")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_f83m0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_bnvc5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_q28wb")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_t5s16")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_ohcey")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_tepms")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_0immr")
+}, {
+"duration": 1.0,
+"texture": ExtResource("15_u23nc")
+}],
+"loop": true,
+"name": &"death",
+"speed": 20.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("8_ngivp")
+}],
+"loop": true,
+"name": &"fly",
+"speed": 10.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ixn7w"]
+radius = 81.00617
+
+[node name="Boss2" groups=["bosses"] instance=ExtResource("1_52fay")]
+z_index = 1
+collision_layer = 3
+collision_mask = 0
+script = ExtResource("2_5kjbs")
+coin_scene = ExtResource("3_k6beb")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." index="0"]
+scale = Vector2(4, 4)
+sprite_frames = SubResource("SpriteFrames_ngivp")
+animation = &"fly"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." index="1"]
+shape = SubResource("CircleShape2D_ixn7w")
+
+[node name="AttackTimer" type="Timer" parent="." index="2"]
+wait_time = 4.0
+autostart = true
+
+[node name="SpawnRusher" type="Timer" parent="." index="3"]
+wait_time = 8.0
+autostart = true
+
+[connection signal="timeout" from="AttackTimer" to="." method="_on_attack_timer_timeout"]
+[connection signal="timeout" from="SpawnRusher" to="." method="_on_spawn_rusher_timeout"]

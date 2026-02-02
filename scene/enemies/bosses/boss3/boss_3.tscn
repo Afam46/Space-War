@@ -1,0 +1,42 @@
+[gd_scene load_steps=7 format=3 uid="uid://epn7cjtkuisj"]
+
+[ext_resource type="PackedScene" uid="uid://bqalbxqvp523a" path="res://scene/bases/enemy_base/enemy_base.tscn" id="1_0n0vl"]
+[ext_resource type="Script" uid="uid://cj31cw1hykpdt" path="res://scene/enemies/bosses/boss3/boss_3.gd" id="2_0aadt"]
+[ext_resource type="PackedScene" uid="uid://ckgmehjvlyq58" path="res://scene/particles/boss3_particles/boss3_particles.tscn" id="7_7lwr5"]
+[ext_resource type="Texture2D" uid="uid://b6xah7ssfb8md" path="res://aaasets/enemies/bosses/boss3/boss3.png" id="8_7lwr5"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_0aadt"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("8_7lwr5")
+}],
+"loop": true,
+"name": &"death",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("8_7lwr5")
+}],
+"loop": true,
+"name": &"fly",
+"speed": 5.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_jb0ut"]
+radius = 89.0
+height = 264.0
+
+[node name="Boss3" groups=["bosses"] instance=ExtResource("1_0n0vl")]
+script = ExtResource("2_0aadt")
+particle_scene = ExtResource("7_7lwr5")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." index="0"]
+scale = Vector2(4, 4)
+sprite_frames = SubResource("SpriteFrames_0aadt")
+animation = &"fly"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." index="1"]
+rotation = 1.5707964
+shape = SubResource("CapsuleShape2D_jb0ut")

@@ -1,0 +1,28 @@
+[gd_scene load_steps=4 format=3 uid="uid://4rmmo5spxxj2"]
+
+[ext_resource type="Script" uid="uid://ddkfk55o6denh" path="res://scene/player_scenes/player_magma_bullet/player_small_magma_bullet.gd" id="1_r6in8"]
+[ext_resource type="Texture2D" uid="uid://c8h5dplw07s0t" path="res://aaasets/bullets/magma_bullet/small_magma_bullet.png" id="2_r6in8"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4t4uj"]
+size = Vector2(20, 19.798992)
+
+[node name="PlayerSmallMagmaBullet" type="Area2D"]
+top_level = true
+collision_layer = 4
+collision_mask = 2
+script = ExtResource("1_r6in8")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(4, 4)
+texture = ExtResource("2_r6in8")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+rotation = 0.7853982
+scale = Vector2(0.9999999, 0.9999999)
+shape = SubResource("RectangleShape2D_4t4uj")
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+rect = Rect2(-10, -12, 20, 24)
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]

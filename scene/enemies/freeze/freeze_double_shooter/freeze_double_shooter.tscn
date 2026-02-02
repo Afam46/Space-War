@@ -1,0 +1,119 @@
+[gd_scene load_steps=25 format=3 uid="uid://d2l4msxfm5r3v"]
+
+[ext_resource type="PackedScene" uid="uid://bqalbxqvp523a" path="res://scene/bases/enemy_base/enemy_base.tscn" id="1_e0tt1"]
+[ext_resource type="Texture2D" uid="uid://w64qf1l51pro" path="res://aaasets/death_medium/death1.png" id="2_esexa"]
+[ext_resource type="Script" uid="uid://iptjdklnmq2s" path="res://scene/enemies/freeze/freeze_double_shooter/freeze_double_shooter.gd" id="2_vq34n"]
+[ext_resource type="PackedScene" uid="uid://dopp5gbm8snd6" path="res://scene/enemies/freeze/enemy_ice_bullet/enemy_ice_bullet.tscn" id="3_d3xem"]
+[ext_resource type="Texture2D" uid="uid://cnmwmukt4r1ak" path="res://aaasets/death_medium/death2.png" id="3_vq34n"]
+[ext_resource type="PackedScene" uid="uid://dtio7stox0bae" path="res://scene/player_scenes/coins/coin_silver/coin_silver.tscn" id="4_0eoma"]
+[ext_resource type="Texture2D" uid="uid://dh5yocgdi8fh1" path="res://aaasets/death_medium/death3.png" id="4_fr6nq"]
+[ext_resource type="Texture2D" uid="uid://2dkpggj5qb5c" path="res://aaasets/death_medium/death4.png" id="5_d3xem"]
+[ext_resource type="Texture2D" uid="uid://cewlqb3ru73vo" path="res://aaasets/death_medium/death5.png" id="6_0eoma"]
+[ext_resource type="Texture2D" uid="uid://ld5i5ck53kw4" path="res://aaasets/death_medium/death6.png" id="7_2pty4"]
+[ext_resource type="Texture2D" uid="uid://bjsvo5oiotnl" path="res://aaasets/death_medium/death7.png" id="8_x8o7s"]
+[ext_resource type="Texture2D" uid="uid://bk4v45w5blolg" path="res://aaasets/death_medium/death8.png" id="9_ljmyd"]
+[ext_resource type="Texture2D" uid="uid://dche0iwpqd83l" path="res://aaasets/death_medium/death9.png" id="10_lo56c"]
+[ext_resource type="Texture2D" uid="uid://7mqvjpn73a6b" path="res://aaasets/death_medium/death10.png" id="11_lqwn8"]
+[ext_resource type="Texture2D" uid="uid://da1whvqxu6sn3" path="res://aaasets/death_medium/death11.png" id="12_1xqc5"]
+[ext_resource type="Texture2D" uid="uid://ccjgp3cmwrx3l" path="res://aaasets/death_medium/death12.png" id="13_rcifi"]
+[ext_resource type="Texture2D" uid="uid://dwky7kt6q1281" path="res://aaasets/death_medium/death13.png" id="14_xw2j0"]
+[ext_resource type="Texture2D" uid="uid://dm24p5yamvjf7" path="res://aaasets/enemies/freeze/freeze_double_shooter/freeze_double_shooter_fly1.png" id="15_la67p"]
+[ext_resource type="Texture2D" uid="uid://dlt7ugpdiheer" path="res://aaasets/enemies/freeze/freeze_double_shooter/freeze_double_shooter_fly2.png" id="16_v46j2"]
+[ext_resource type="Texture2D" uid="uid://c6dqcjtk5m5lj" path="res://aaasets/enemies/freeze/freeze_double_shooter/freeze_double_shooter_fly3.png" id="17_3ydqq"]
+[ext_resource type="Texture2D" uid="uid://cux3dp77kqxrj" path="res://aaasets/enemies/freeze/freeze_double_shooter/freeze_double_shooter_fly4.png" id="18_v77a8"]
+[ext_resource type="Texture2D" uid="uid://cdkfj04w7v077" path="res://aaasets/enemies/freeze/freeze_double_shooter/freeze_double_shooter_fly5.png" id="19_4uqkl"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_if3es"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_esexa")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_vq34n")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_fr6nq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_d3xem")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_0eoma")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_2pty4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_x8o7s")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_ljmyd")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_lo56c")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_lqwn8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_1xqc5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_rcifi")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_xw2j0")
+}],
+"loop": true,
+"name": &"death",
+"speed": 20.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("15_la67p")
+}, {
+"duration": 1.0,
+"texture": ExtResource("16_v46j2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("17_3ydqq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("18_v77a8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("19_4uqkl")
+}],
+"loop": true,
+"name": &"fly",
+"speed": 10.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_esexa"]
+radius = 64.0
+height = 152.0
+
+[node name="FreezeDoubleShooter" groups=["freezing_enemies"] instance=ExtResource("1_e0tt1")]
+collision_layer = 3
+collision_mask = 0
+script = ExtResource("2_vq34n")
+enemy_bullet_scene = ExtResource("3_d3xem")
+coin_scene = ExtResource("4_0eoma")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." index="2"]
+rotation = 3.1415927
+scale = Vector2(4, 4)
+sprite_frames = SubResource("SpriteFrames_if3es")
+animation = &"fly"
+frame = 2
+frame_progress = 0.42631778
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." index="3"]
+shape = SubResource("CapsuleShape2D_esexa")
+
+[node name="Shot" type="Timer" parent="." index="4"]
+wait_time = 2.5
+autostart = true
+
+[connection signal="timeout" from="Shot" to="." method="_on_shot_timeout"]

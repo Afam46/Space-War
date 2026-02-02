@@ -1,0 +1,88 @@
+[gd_scene load_steps=16 format=3 uid="uid://sp6vbogumr4"]
+
+[ext_resource type="PackedScene" uid="uid://bqalbxqvp523a" path="res://scene/bases/enemy_base/enemy_base.tscn" id="1_3mmnt"]
+[ext_resource type="Script" uid="uid://b4uedlaub52g3" path="res://scene/enemies/default/rusher/rusher.gd" id="2_blojl"]
+[ext_resource type="Texture2D" uid="uid://b13hhrlwjd3qm" path="res://aaasets/death_small/death1.png" id="5_3lgu4"]
+[ext_resource type="Texture2D" uid="uid://kd33af3chnjl" path="res://aaasets/death_small/death2.png" id="6_a86ps"]
+[ext_resource type="Texture2D" uid="uid://cjt0xcv3j8mfw" path="res://aaasets/death_small/death3.png" id="7_yrjxa"]
+[ext_resource type="Texture2D" uid="uid://dovvvfta4g00d" path="res://aaasets/death_small/death4.png" id="8_nqv6h"]
+[ext_resource type="Texture2D" uid="uid://c4sbymgehwxn1" path="res://aaasets/death_small/death5.png" id="9_ooymk"]
+[ext_resource type="Texture2D" uid="uid://bqimh8yeam1e1" path="res://aaasets/death_small/death6.png" id="10_8el1x"]
+[ext_resource type="Texture2D" uid="uid://cnt1whhy4xaj7" path="res://aaasets/enemies/default/rusher/rusher_fly1.png" id="11_5etyu"]
+[ext_resource type="Texture2D" uid="uid://wyxa8wvp8iyb" path="res://aaasets/enemies/default/rusher/rusher_fly2.png" id="12_vlfff"]
+[ext_resource type="Texture2D" uid="uid://df7xpbr3rx84k" path="res://aaasets/enemies/default/rusher/rusher_fly3.png" id="13_swvxs"]
+[ext_resource type="Texture2D" uid="uid://k2wre0fusidi" path="res://aaasets/enemies/default/rusher/rusher_fly4.png" id="14_dxiwm"]
+[ext_resource type="Texture2D" uid="uid://ded2qea0p6lr6" path="res://aaasets/enemies/default/rusher/rusher_fly5.png" id="15_jnaji"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_8el1x"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_3lgu4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_a86ps")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_yrjxa")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_nqv6h")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_ooymk")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_8el1x")
+}],
+"loop": true,
+"name": &"death",
+"speed": 8.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("11_5etyu")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_vlfff")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_swvxs")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_dxiwm")
+}, {
+"duration": 1.0,
+"texture": ExtResource("15_jnaji")
+}],
+"loop": true,
+"name": &"fly",
+"speed": 10.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5etyu"]
+size = Vector2(56.56855, 56.568554)
+
+[node name="Rusher" groups=["enemies"] instance=ExtResource("1_3mmnt")]
+collision_layer = 3
+collision_mask = 0
+gravity_scale = 0.0
+script = ExtResource("2_blojl")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." index="0"]
+rotation = 1.5707964
+scale = Vector2(4, 4)
+sprite_frames = SubResource("SpriteFrames_8el1x")
+animation = &"fly"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." index="1"]
+position = Vector2(12.000002, -5.5134296e-07)
+rotation = 0.7853982
+scale = Vector2(0.9999999, 0.9999999)
+shape = SubResource("RectangleShape2D_5etyu")
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="." index="2"]
+position = Vector2(0, 5)
+rect = Rect2(-43, -47, 95, 84)
+
+[connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]

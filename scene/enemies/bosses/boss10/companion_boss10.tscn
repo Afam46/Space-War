@@ -1,0 +1,79 @@
+[gd_scene load_steps=15 format=3 uid="uid://bsktxno02ldxq"]
+
+[ext_resource type="PackedScene" uid="uid://bqalbxqvp523a" path="res://scene/bases/enemy_base/enemy_base.tscn" id="1_s1m6s"]
+[ext_resource type="Script" uid="uid://c8k6u4krjx2i8" path="res://scene/enemies/bosses/boss10/companion_boss_10.gd" id="2_6d3r5"]
+[ext_resource type="PackedScene" uid="uid://fog78j0tqp2p" path="res://scene/enemies/default/magma_bullets/small_magma_bullet.tscn" id="3_n7342"]
+[ext_resource type="Texture2D" uid="uid://b13hhrlwjd3qm" path="res://aaasets/death_small/death1.png" id="4_n7342"]
+[ext_resource type="Texture2D" uid="uid://kd33af3chnjl" path="res://aaasets/death_small/death2.png" id="5_ruj4y"]
+[ext_resource type="Texture2D" uid="uid://cjt0xcv3j8mfw" path="res://aaasets/death_small/death3.png" id="6_hda36"]
+[ext_resource type="Texture2D" uid="uid://dovvvfta4g00d" path="res://aaasets/death_small/death4.png" id="7_4kupt"]
+[ext_resource type="Texture2D" uid="uid://c4sbymgehwxn1" path="res://aaasets/death_small/death5.png" id="8_g5ouk"]
+[ext_resource type="Texture2D" uid="uid://bqimh8yeam1e1" path="res://aaasets/death_small/death6.png" id="9_apoo4"]
+[ext_resource type="Texture2D" uid="uid://b3rijjdn0abbc" path="res://aaasets/enemies/bosses/boss10/companion/boss10_companion_fly1.png" id="10_ecxbj"]
+[ext_resource type="Texture2D" uid="uid://i8sr6454tpr7" path="res://aaasets/enemies/bosses/boss10/companion/boss10_companion_fly2.png" id="11_20k4c"]
+[ext_resource type="Texture2D" uid="uid://bif7bqo6ti61u" path="res://aaasets/enemies/bosses/boss10/companion/boss10_companion_fly3.png" id="12_y2rxx"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_oj3u2"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_n7342")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_ruj4y")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_hda36")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_4kupt")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_g5ouk")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_apoo4")
+}],
+"loop": true,
+"name": &"death",
+"speed": 8.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("10_ecxbj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_20k4c")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_y2rxx")
+}],
+"loop": true,
+"name": &"fly",
+"speed": 5.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_aq8v3"]
+radius = 14.000002
+height = 54.000008
+
+[node name="Boss10Companion" groups=["lava_enemies"] instance=ExtResource("1_s1m6s")]
+script = ExtResource("2_6d3r5")
+enemy_bullet_scene = ExtResource("3_n7342")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." index="2"]
+rotation = 3.1415927
+scale = Vector2(4, 4)
+sprite_frames = SubResource("SpriteFrames_oj3u2")
+animation = &"fly"
+frame_progress = 0.6139133
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." index="3"]
+scale = Vector2(0.9999999, 0.9999999)
+shape = SubResource("CapsuleShape2D_aq8v3")
+
+[node name="Shot" type="Timer" parent="." index="4"]
+wait_time = 2.0
+autostart = true
+
+[connection signal="timeout" from="Shot" to="." method="shot"]

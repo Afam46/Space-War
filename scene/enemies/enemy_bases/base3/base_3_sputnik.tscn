@@ -1,0 +1,132 @@
+[gd_scene load_steps=29 format=3 uid="uid://b20q1rysx2bi5"]
+
+[ext_resource type="PackedScene" uid="uid://bqalbxqvp523a" path="res://scene/bases/enemy_base/enemy_base.tscn" id="1_ofo1k"]
+[ext_resource type="Texture2D" uid="uid://byy540imrsg51" path="res://aaasets/death_big/death1.png" id="2_8hnd7"]
+[ext_resource type="Script" uid="uid://dfak7mpyb6lw4" path="res://scene/enemies/enemy_bases/base3/base_3_sputnik.gd" id="2_lc31u"]
+[ext_resource type="PackedScene" uid="uid://bcxx65l78cdqv" path="res://scene/enemies/default/lazer/small_laser.tscn" id="3_2rqio"]
+[ext_resource type="Texture2D" uid="uid://bfh1lqqa6t6c4" path="res://aaasets/death_big/death2.png" id="3_lc31u"]
+[ext_resource type="PackedScene" uid="uid://b480it55qe461" path="res://scene/player_scenes/coins/coin_brilliant/coin_brilliant.tscn" id="4_0y7xd"]
+[ext_resource type="Texture2D" uid="uid://brvdeersu0aud" path="res://aaasets/death_big/death3.png" id="4_2rqio"]
+[ext_resource type="Texture2D" uid="uid://jninaaa04w40" path="res://aaasets/death_big/death4.png" id="5_0y7xd"]
+[ext_resource type="Texture2D" uid="uid://ctglb80f6ivlp" path="res://aaasets/death_big/death5.png" id="6_gsver"]
+[ext_resource type="Texture2D" uid="uid://bl1l0rxf7pps0" path="res://aaasets/death_big/death6.png" id="7_ep1lc"]
+[ext_resource type="Texture2D" uid="uid://c6h3wti8oydwf" path="res://aaasets/death_big/death7.png" id="8_i6rth"]
+[ext_resource type="Texture2D" uid="uid://ducqxnx8pp8bg" path="res://aaasets/death_big/death8.png" id="9_5fy7l"]
+[ext_resource type="Texture2D" uid="uid://ckt55u11ncgdc" path="res://aaasets/death_big/death9.png" id="10_vfx80"]
+[ext_resource type="Texture2D" uid="uid://cg5ivhs321h21" path="res://aaasets/death_big/death10.png" id="11_8jvsh"]
+[ext_resource type="Texture2D" uid="uid://gygsx68cgi2e" path="res://aaasets/death_big/death11.png" id="12_20sky"]
+[ext_resource type="Texture2D" uid="uid://dbkpoyam4wnlk" path="res://aaasets/death_big/death12.png" id="13_mrlra"]
+[ext_resource type="Texture2D" uid="uid://b3rl3l2n4as2n" path="res://aaasets/death_big/death13.png" id="14_xuwx2"]
+[ext_resource type="Texture2D" uid="uid://cb0ugtfdmd43x" path="res://aaasets/death_big/death14.png" id="15_k5arh"]
+[ext_resource type="Texture2D" uid="uid://c51sun3htm0ax" path="res://aaasets/death_big/death15.png" id="16_nxewx"]
+[ext_resource type="Texture2D" uid="uid://cd0sprwutngv6" path="res://aaasets/death_big/death16.png" id="17_j8j8p"]
+[ext_resource type="Texture2D" uid="uid://bbooeqibq5qfw" path="res://aaasets/death_big/death17.png" id="18_3tjm8"]
+[ext_resource type="Texture2D" uid="uid://dnr5binjbsef7" path="res://aaasets/death_big/death18.png" id="19_7bp78"]
+[ext_resource type="Texture2D" uid="uid://dj0raxmxphrdy" path="res://aaasets/death_big/death19.png" id="20_3k1la"]
+[ext_resource type="Texture2D" uid="uid://cbhlyr3fpjerc" path="res://aaasets/death_big/death20.png" id="21_ag0gn"]
+[ext_resource type="Texture2D" uid="uid://b8s5ig5sxluau" path="res://aaasets/death_big/death21.png" id="22_yxx0t"]
+[ext_resource type="Texture2D" uid="uid://d0gfl47id6slj" path="res://aaasets/enemies/bases/base3/base3_sputnik.png" id="23_p3d7y"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_dscgm"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_8hnd7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_lc31u")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_2rqio")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_0y7xd")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_gsver")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_ep1lc")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_i6rth")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_5fy7l")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_vfx80")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_8jvsh")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_20sky")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_mrlra")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_xuwx2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("15_k5arh")
+}, {
+"duration": 1.0,
+"texture": ExtResource("16_nxewx")
+}, {
+"duration": 1.0,
+"texture": ExtResource("17_j8j8p")
+}, {
+"duration": 1.0,
+"texture": ExtResource("18_3tjm8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("19_7bp78")
+}, {
+"duration": 1.0,
+"texture": ExtResource("20_3k1la")
+}, {
+"duration": 1.0,
+"texture": ExtResource("21_ag0gn")
+}, {
+"duration": 1.0,
+"texture": ExtResource("22_yxx0t")
+}],
+"loop": true,
+"name": &"death",
+"speed": 20.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("23_p3d7y")
+}],
+"loop": true,
+"name": &"fly",
+"speed": 0.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_8hnd7"]
+radius = 167.0
+height = 384.0
+
+[node name="Base3Sputnik" groups=["lava_enemies"] instance=ExtResource("1_ofo1k")]
+z_index = -1
+script = ExtResource("2_lc31u")
+laser_scene = ExtResource("3_2rqio")
+coin_scene = ExtResource("4_0y7xd")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." index="4"]
+rotation = 3.1415927
+scale = Vector2(4, 4)
+sprite_frames = SubResource("SpriteFrames_dscgm")
+animation = &"fly"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." index="5"]
+shape = SubResource("CapsuleShape2D_8hnd7")
+
+[node name="Shot" type="Timer" parent="." index="6"]
+wait_time = 6.0
+autostart = true
+
+[connection signal="timeout" from="Shot" to="." method="_on_shot_timeout"]

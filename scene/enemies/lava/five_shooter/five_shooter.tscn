@@ -1,0 +1,119 @@
+[gd_scene load_steps=25 format=3 uid="uid://cnlagga7c1rk5"]
+
+[ext_resource type="PackedScene" uid="uid://bqalbxqvp523a" path="res://scene/bases/enemy_base/enemy_base.tscn" id="1_iks4u"]
+[ext_resource type="Script" uid="uid://ckxsrh7hpayk4" path="res://scene/enemies/lava/five_shooter/five_shooter.gd" id="2_35no8"]
+[ext_resource type="PackedScene" uid="uid://e8elg6ssoy0f" path="res://scene/enemies/lava/enemy_lava_bullet/enemy_lava_bullet.tscn" id="3_vgitu"]
+[ext_resource type="Texture2D" uid="uid://w64qf1l51pro" path="res://aaasets/death_medium/death1.png" id="3_vqls6"]
+[ext_resource type="Texture2D" uid="uid://cnmwmukt4r1ak" path="res://aaasets/death_medium/death2.png" id="4_dv442"]
+[ext_resource type="PackedScene" uid="uid://b480it55qe461" path="res://scene/player_scenes/coins/coin_brilliant/coin_brilliant.tscn" id="4_krm7i"]
+[ext_resource type="Texture2D" uid="uid://dh5yocgdi8fh1" path="res://aaasets/death_medium/death3.png" id="5_vgitu"]
+[ext_resource type="Texture2D" uid="uid://2dkpggj5qb5c" path="res://aaasets/death_medium/death4.png" id="6_krm7i"]
+[ext_resource type="Texture2D" uid="uid://cewlqb3ru73vo" path="res://aaasets/death_medium/death5.png" id="7_d1ljr"]
+[ext_resource type="Texture2D" uid="uid://ld5i5ck53kw4" path="res://aaasets/death_medium/death6.png" id="8_j3qpa"]
+[ext_resource type="Texture2D" uid="uid://bjsvo5oiotnl" path="res://aaasets/death_medium/death7.png" id="9_1w46s"]
+[ext_resource type="Texture2D" uid="uid://bk4v45w5blolg" path="res://aaasets/death_medium/death8.png" id="10_5i1c7"]
+[ext_resource type="Texture2D" uid="uid://dche0iwpqd83l" path="res://aaasets/death_medium/death9.png" id="11_6ghvp"]
+[ext_resource type="Texture2D" uid="uid://7mqvjpn73a6b" path="res://aaasets/death_medium/death10.png" id="12_uudfi"]
+[ext_resource type="Texture2D" uid="uid://da1whvqxu6sn3" path="res://aaasets/death_medium/death11.png" id="13_hfsf8"]
+[ext_resource type="Texture2D" uid="uid://ccjgp3cmwrx3l" path="res://aaasets/death_medium/death12.png" id="14_f6an7"]
+[ext_resource type="Texture2D" uid="uid://dwky7kt6q1281" path="res://aaasets/death_medium/death13.png" id="15_veugl"]
+[ext_resource type="Texture2D" uid="uid://bpd56j51mh2lw" path="res://aaasets/enemies/lava/five_shooter/five_shooter_fly1.png" id="16_gi2wn"]
+[ext_resource type="Texture2D" uid="uid://0blyad6ie0l8" path="res://aaasets/enemies/lava/five_shooter/five_shooter_fly2.png" id="17_soayv"]
+[ext_resource type="Texture2D" uid="uid://c8tmdg4pdsmmn" path="res://aaasets/enemies/lava/five_shooter/five_shooter_fly3.png" id="18_ajm7f"]
+[ext_resource type="Texture2D" uid="uid://csjt7nw5u4umr" path="res://aaasets/enemies/lava/five_shooter/five_shooter_fly4.png" id="19_jc7qd"]
+[ext_resource type="Texture2D" uid="uid://dywk7kswvuo5b" path="res://aaasets/enemies/lava/five_shooter/five_shooter_fly5.png" id="20_mik0f"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_x4qic"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_vqls6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_dv442")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_vgitu")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_krm7i")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_d1ljr")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_j3qpa")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_1w46s")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_5i1c7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_6ghvp")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_uudfi")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_hfsf8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_f6an7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("15_veugl")
+}],
+"loop": true,
+"name": &"death",
+"speed": 20.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("16_gi2wn")
+}, {
+"duration": 1.0,
+"texture": ExtResource("17_soayv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("18_ajm7f")
+}, {
+"duration": 1.0,
+"texture": ExtResource("19_jc7qd")
+}, {
+"duration": 1.0,
+"texture": ExtResource("20_mik0f")
+}],
+"loop": true,
+"name": &"fly",
+"speed": 10.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_tn0hp"]
+radius = 102.59142
+
+[node name="FiveShooter" groups=["lava_enemies"] instance=ExtResource("1_iks4u")]
+script = ExtResource("2_35no8")
+enemy_bullet_scene = ExtResource("3_vgitu")
+coin_scene = ExtResource("4_krm7i")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." index="4"]
+rotation = 3.1415927
+scale = Vector2(4, 4)
+sprite_frames = SubResource("SpriteFrames_x4qic")
+animation = &"fly"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." index="5"]
+shape = SubResource("CircleShape2D_tn0hp")
+
+[node name="FastShot" type="Timer" parent="." index="6"]
+wait_time = 2.0
+autostart = true
+
+[node name="SlowShot" type="Timer" parent="." index="7"]
+wait_time = 5.5
+autostart = true
+
+[connection signal="timeout" from="FastShot" to="." method="_on_fast_shot_timeout"]
+[connection signal="timeout" from="SlowShot" to="." method="_on_slow_shot_timeout"]

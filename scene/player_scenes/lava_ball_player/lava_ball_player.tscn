@@ -1,0 +1,63 @@
+[gd_scene load_steps=11 format=3 uid="uid://byeiqp8hb7cdb"]
+
+[ext_resource type="PackedScene" uid="uid://bqalbxqvp523a" path="res://scene/bases/enemy_base/enemy_base.tscn" id="1_uv8oc"]
+[ext_resource type="Script" uid="uid://bgdo1ab87avpe" path="res://scene/player_scenes/lava_ball_player/lava_ball_player.gd" id="2_kbiyu"]
+[ext_resource type="PackedScene" uid="uid://e8lr7ts31245" path="res://scene/player_scenes/player_magma_bullet/player_magma_bullet.tscn" id="3_r5fha"]
+[ext_resource type="Texture2D" uid="uid://cgrs1ykxi7xer" path="res://aaasets/enemies/lava/lava_ball/lava_ball_death1.png" id="5_o8fsb"]
+[ext_resource type="Texture2D" uid="uid://br6ex81onql63" path="res://aaasets/enemies/lava/lava_ball/lava_ball_death2.png" id="6_vde1n"]
+[ext_resource type="Texture2D" uid="uid://j113ciggncy1" path="res://aaasets/enemies/lava/lava_ball/lava_ball_death3.png" id="7_hlewt"]
+[ext_resource type="Texture2D" uid="uid://b7taluqqlq6mi" path="res://aaasets/enemies/lava/lava_ball/lava_ball_death4.png" id="8_2mcv6"]
+[ext_resource type="Texture2D" uid="uid://dx6aexhtmqtim" path="res://aaasets/enemies/lava/lava_ball/lava_ball_death5.png" id="9_jpne5"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_c7ftm"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_o8fsb")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_vde1n")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_hlewt")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_2mcv6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_jpne5")
+}],
+"loop": true,
+"name": &"death",
+"speed": 8.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_o8fsb")
+}],
+"loop": true,
+"name": &"fly",
+"speed": 0.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_3nahc"]
+radius = 32.01562
+
+[node name="LavaBallPlayer" groups=["boosts", "friendly_enemies"] instance=ExtResource("1_uv8oc")]
+collision_layer = 4
+collision_mask = 3
+script = ExtResource("2_kbiyu")
+magma_bullet_scene = ExtResource("3_r5fha")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." index="4"]
+scale = Vector2(4, 4)
+sprite_frames = SubResource("SpriteFrames_c7ftm")
+animation = &"fly"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." index="5"]
+shape = SubResource("CircleShape2D_3nahc")
+
+[node name="VisibleOnScreenEnabler2D" type="VisibleOnScreenEnabler2D" parent="." index="6"]
+rect = Rect2(-32, -32, 64, 64)
+
+[connection signal="screen_exited" from="VisibleOnScreenEnabler2D" to="." method="_on_visible_on_screen_enabler_2d_screen_exited"]

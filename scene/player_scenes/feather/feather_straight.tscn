@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://cprf48kmfvm5o"]
+
+[ext_resource type="PackedScene" uid="uid://ce4jfsognjpoe" path="res://scene/enemies/bosses/boss6/boss6_bullet.tscn" id="1_21pj3"]
+[ext_resource type="Script" uid="uid://dd8ab3r5idsrr" path="res://scene/player_scenes/feather/feather_straight.gd" id="2_21pj3"]
+
+[node name="FeatherStraight" instance=ExtResource("1_21pj3")]
+top_level = true
+z_index = 10
+collision_layer = 4
+collision_mask = 2
+script = ExtResource("2_21pj3")
+
+[node name="Sprite2D" parent="." index="0"]
+rotation = 0.0
+
+[node name="LifeTime" parent="." index="3"]
+wait_time = 10.0

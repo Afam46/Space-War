@@ -1,0 +1,117 @@
+[gd_scene load_steps=24 format=3 uid="uid://dyqrihlb5rgst"]
+
+[ext_resource type="PackedScene" uid="uid://bqalbxqvp523a" path="res://scene/bases/enemy_base/enemy_base.tscn" id="1_8k2ic"]
+[ext_resource type="Script" uid="uid://dlo0yct0bkfwk" path="res://scene/enemies/default/electro_shooter/electro_shooter.gd" id="2_fhlkn"]
+[ext_resource type="PackedScene" uid="uid://ocmugf5phxi7" path="res://scene/enemies/default/electro_ball/electro_ball.tscn" id="3_hpkoi"]
+[ext_resource type="Texture2D" uid="uid://cnos7x64hemci" path="res://aaasets/enemies/default/electro_shooter/electro_shooter_fly1.png" id="4_nx7p1"]
+[ext_resource type="Texture2D" uid="uid://cf22rkmok8bfv" path="res://aaasets/enemies/default/electro_shooter/electro_shooter_fly2.png" id="5_bx4s8"]
+[ext_resource type="Texture2D" uid="uid://5ud6f46cnr56" path="res://aaasets/enemies/default/electro_shooter/electro_shooter_fly3.png" id="6_6qipf"]
+[ext_resource type="Texture2D" uid="uid://cnq4syeka62ph" path="res://aaasets/enemies/default/electro_shooter/electro_shooter_fly4.png" id="7_t5jm2"]
+[ext_resource type="Texture2D" uid="uid://ct36o8ewkuvnl" path="res://aaasets/enemies/default/electro_shooter/electro_shooter_fly5.png" id="8_mytwv"]
+[ext_resource type="Texture2D" uid="uid://w64qf1l51pro" path="res://aaasets/death_medium/death1.png" id="9_lh6yk"]
+[ext_resource type="Texture2D" uid="uid://cnmwmukt4r1ak" path="res://aaasets/death_medium/death2.png" id="10_61lq0"]
+[ext_resource type="Texture2D" uid="uid://dh5yocgdi8fh1" path="res://aaasets/death_medium/death3.png" id="11_qkrmu"]
+[ext_resource type="Texture2D" uid="uid://2dkpggj5qb5c" path="res://aaasets/death_medium/death4.png" id="12_4biln"]
+[ext_resource type="Texture2D" uid="uid://cewlqb3ru73vo" path="res://aaasets/death_medium/death5.png" id="13_rnwja"]
+[ext_resource type="Texture2D" uid="uid://ld5i5ck53kw4" path="res://aaasets/death_medium/death6.png" id="14_ll46h"]
+[ext_resource type="Texture2D" uid="uid://bjsvo5oiotnl" path="res://aaasets/death_medium/death7.png" id="15_hcmmr"]
+[ext_resource type="Texture2D" uid="uid://bk4v45w5blolg" path="res://aaasets/death_medium/death8.png" id="16_o1kap"]
+[ext_resource type="Texture2D" uid="uid://dche0iwpqd83l" path="res://aaasets/death_medium/death9.png" id="17_cvlep"]
+[ext_resource type="Texture2D" uid="uid://7mqvjpn73a6b" path="res://aaasets/death_medium/death10.png" id="18_8ksdl"]
+[ext_resource type="Texture2D" uid="uid://da1whvqxu6sn3" path="res://aaasets/death_medium/death11.png" id="19_nq0qe"]
+[ext_resource type="Texture2D" uid="uid://ccjgp3cmwrx3l" path="res://aaasets/death_medium/death12.png" id="20_dgrne"]
+[ext_resource type="Texture2D" uid="uid://dwky7kt6q1281" path="res://aaasets/death_medium/death13.png" id="21_nlytp"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_qkrmu"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_nx7p1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_bx4s8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_6qipf")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_t5jm2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_mytwv")
+}],
+"loop": true,
+"name": &"attack",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("9_lh6yk")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_61lq0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_qkrmu")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_4biln")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_rnwja")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_ll46h")
+}, {
+"duration": 1.0,
+"texture": ExtResource("15_hcmmr")
+}, {
+"duration": 1.0,
+"texture": ExtResource("16_o1kap")
+}, {
+"duration": 1.0,
+"texture": ExtResource("17_cvlep")
+}, {
+"duration": 1.0,
+"texture": ExtResource("18_8ksdl")
+}, {
+"duration": 1.0,
+"texture": ExtResource("19_nq0qe")
+}, {
+"duration": 1.0,
+"texture": ExtResource("20_dgrne")
+}, {
+"duration": 1.0,
+"texture": ExtResource("21_nlytp")
+}],
+"loop": true,
+"name": &"death",
+"speed": 20.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1nm0a"]
+size = Vector2(184, 144)
+
+[node name="ElectroShooter" instance=ExtResource("1_8k2ic")]
+collision_layer = 3
+collision_mask = 0
+script = ExtResource("2_fhlkn")
+enemy_bullet_scene = ExtResource("3_hpkoi")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." index="0"]
+rotation = 3.1415927
+scale = Vector2(4, 4)
+sprite_frames = SubResource("SpriteFrames_qkrmu")
+animation = &"attack"
+frame = 2
+frame_progress = 0.2475803
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." index="1"]
+position = Vector2(0, -8)
+shape = SubResource("RectangleShape2D_1nm0a")
+
+[node name="Shot" type="Timer" parent="." index="2"]
+wait_time = 3.5
+autostart = true
+
+[connection signal="timeout" from="Shot" to="." method="_on_shot_timeout"]

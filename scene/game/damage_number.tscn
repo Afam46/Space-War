@@ -1,0 +1,17 @@
+[gd_scene load_steps=2 format=3 uid="uid://d42nw71d0b5p"]
+
+[ext_resource type="Script" uid="uid://cpdeudovohl3q" path="res://scene/game/damage_number.gd" id="1_vsgwl"]
+
+[node name="DamageNumber" type="Node2D"]
+script = ExtResource("1_vsgwl")
+
+[node name="Label" type="Label" parent="."]
+z_index = 20
+offset_right = 40.0
+offset_bottom = 23.0
+theme_override_colors/font_color = Color(0.83137256, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 8
+theme_override_font_sizes/font_size = 28
+
+[node name="Timer" type="Timer" parent="."]

@@ -1,0 +1,23 @@
+[gd_scene load_steps=4 format=3 uid="uid://dq7kbd8nuykid"]
+
+[ext_resource type="Script" uid="uid://bdxv7deruw0or" path="res://scene/player_scenes/wall_sheald/dragon_sheald.gd" id="1_lnous"]
+[ext_resource type="Texture2D" uid="uid://33tmhwsut4nk" path="res://aaasets/boosts/dragon_sheald.png" id="2_lnous"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_tnjxq"]
+size = Vector2(172.00002, 60.00001)
+
+[node name="DragonSheald" type="Area2D" groups=["boosts"]]
+collision_layer = 5
+collision_mask = 3
+script = ExtResource("1_lnous")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(4, 4)
+texture = ExtResource("2_lnous")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(9.536743e-07, -9.536743e-07)
+scale = Vector2(0.9999999, 0.9999999)
+shape = SubResource("RectangleShape2D_tnjxq")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

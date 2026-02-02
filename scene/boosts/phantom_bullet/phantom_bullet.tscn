@@ -1,0 +1,11 @@
+[gd_scene load_steps=4 format=3 uid="uid://cbmgmcg8h7m63"]
+
+[ext_resource type="PackedScene" uid="uid://cpijrbk1ym1oe" path="res://scene/bases/boost_base/boost_base.tscn" id="1_irjlc"]
+[ext_resource type="Script" uid="uid://dyg7hpfo4fr4i" path="res://phantom_bullet.gd" id="2_r0we3"]
+[ext_resource type="Texture2D" uid="uid://b5u4cjaiqfwup" path="res://icons/icon_phantom_bullet.png" id="3_wx73d"]
+
+[node name="PhantomBullet" instance=ExtResource("1_irjlc")]
+script = ExtResource("2_r0we3")
+
+[node name="IconSprite" parent="." index="1"]
+texture = ExtResource("3_wx73d")

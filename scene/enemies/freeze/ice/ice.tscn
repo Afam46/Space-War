@@ -1,0 +1,85 @@
+[gd_scene load_steps=16 format=3 uid="uid://dgg22eppriaxg"]
+
+[ext_resource type="Script" uid="uid://dmmsd830wmdih" path="res://scene/enemies/freeze/ice/ice.gd" id="1_o4fkx"]
+[ext_resource type="PackedScene" uid="uid://bqalbxqvp523a" path="res://scene/bases/enemy_base/enemy_base.tscn" id="1_p4xwe"]
+[ext_resource type="PackedScene" uid="uid://daaqkj18v0occ" path="res://scene/particles/blue_boost/blue_boost.tscn" id="3_20swa"]
+[ext_resource type="Texture2D" uid="uid://yvx2jbl1j6er" path="res://aaasets/enemies/freeze/ice/ice_death2.png" id="3_ppv7s"]
+[ext_resource type="Texture2D" uid="uid://dl856342l617h" path="res://aaasets/enemies/freeze/ice/ice_death3.png" id="4_kbadg"]
+[ext_resource type="PackedScene" uid="uid://dtio7stox0bae" path="res://scene/player_scenes/coins/coin_silver/coin_silver.tscn" id="4_vkdfm"]
+[ext_resource type="Texture2D" uid="uid://cw3wyj76kmojq" path="res://aaasets/enemies/freeze/ice/ice_death4.png" id="5_43w2a"]
+[ext_resource type="Texture2D" uid="uid://dju87tfnn2pe6" path="res://aaasets/enemies/freeze/ice/ice_create1.png" id="5_wiyab"]
+[ext_resource type="Texture2D" uid="uid://bk73jfvrey5mj" path="res://aaasets/enemies/freeze/ice/ice_create2.png" id="6_5sifv"]
+[ext_resource type="Texture2D" uid="uid://be8ai2edf4pg6" path="res://aaasets/enemies/freeze/ice/ice_death5.png" id="6_ghqih"]
+[ext_resource type="Texture2D" uid="uid://bw8icvftfv1av" path="res://aaasets/enemies/freeze/ice/ice_create3.png" id="7_c4u22"]
+[ext_resource type="Texture2D" uid="uid://cphjiwiwunvi3" path="res://aaasets/enemies/freeze/ice/ice.png" id="7_ffs6o"]
+[ext_resource type="AudioStream" uid="uid://bqyu7xwp4ukmt" path="res://aasounds/ice_destroy.wav" id="13_wiyab"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_mvi5m"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_wiyab")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_5sifv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_c4u22")
+}],
+"loop": true,
+"name": &"create",
+"speed": 1.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_ppv7s")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_kbadg")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_43w2a")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_ghqih")
+}],
+"loop": true,
+"name": &"death",
+"speed": 7.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("7_ffs6o")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 1.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_p4xwe"]
+radius = 22.0
+height = 84.0
+
+[node name="Ice" groups=["bullets", "freezing_enemies"] instance=ExtResource("1_p4xwe")]
+script = ExtResource("1_o4fkx")
+particle_scene = ExtResource("3_20swa")
+coin_scene = ExtResource("4_vkdfm")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." index="2"]
+scale = Vector2(4, 4)
+sprite_frames = SubResource("SpriteFrames_mvi5m")
+animation = &"idle"
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="." index="3"]
+position = Vector2(-12, -6)
+scale = Vector2(3, 3)
+rect = Rect2(-3.3333335, -12, 14.666668, 28)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." index="4"]
+shape = SubResource("CapsuleShape2D_p4xwe")
+
+[node name="Death" parent="." index="5"]
+stream = ExtResource("13_wiyab")
+volume_db = 10.0
+
+[connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]

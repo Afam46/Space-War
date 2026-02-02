@@ -1,0 +1,11 @@
+[gd_scene load_steps=4 format=3 uid="uid://bh3op8mgmqnwe"]
+
+[ext_resource type="PackedScene" uid="uid://cpijrbk1ym1oe" path="res://scene/bases/boost_base/boost_base.tscn" id="1_nbxuk"]
+[ext_resource type="Script" uid="uid://b3fedbgulxxrj" path="res://scene/boosts/boost_magma_bullet/boost_magma_bullet.gd" id="2_hob21"]
+[ext_resource type="Texture2D" uid="uid://dgf5uy2ur4ppq" path="res://icons/icon_magma_bullet.png" id="3_1t0xd"]
+
+[node name="BoostMagmaBullet" instance=ExtResource("1_nbxuk")]
+script = ExtResource("2_hob21")
+
+[node name="IconSprite" parent="." index="1"]
+texture = ExtResource("3_1t0xd")

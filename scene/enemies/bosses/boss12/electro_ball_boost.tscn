@@ -1,0 +1,13 @@
+[gd_scene load_steps=4 format=3 uid="uid://bdp5d1fstjv6g"]
+
+[ext_resource type="PackedScene" uid="uid://cpijrbk1ym1oe" path="res://scene/bases/boost_base/boost_base.tscn" id="1_rlht3"]
+[ext_resource type="Texture2D" uid="uid://bcwhrrrhp3sef" path="res://icons/icon_electro_ball.png" id="2_7d7nd"]
+[ext_resource type="Script" uid="uid://dm0eieubt57fc" path="res://scene/enemies/bosses/boss12/electro_ball_boost.gd" id="2_xwkll"]
+
+[node name="ElectroBallBoost" instance=ExtResource("1_rlht3")]
+z_index = -2
+script = ExtResource("2_xwkll")
+particle_scene = null
+
+[node name="IconSprite" parent="." index="1"]
+texture = ExtResource("2_7d7nd")

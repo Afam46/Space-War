@@ -1,0 +1,23 @@
+[gd_scene load_steps=3 format=3 uid="uid://ci6d3ouacw7fp"]
+
+[ext_resource type="Texture2D" uid="uid://cjq7fj286rvuc" path="res://aaasets/particles/clin_moment.png" id="1_f6xy3"]
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_ux0lf"]
+particle_flag_disable_z = true
+direction = Vector3(0, -1, 0)
+spread = 20.0
+initial_velocity_min = 200.0
+initial_velocity_max = 200.0
+gravity = Vector3(0, -100, 0)
+scale_min = 3.0
+scale_max = 4.0
+hue_variation_min = -2.2351742e-08
+hue_variation_max = 0.15999997
+
+[node name="ClinMoment" type="GPUParticles2D"]
+top_level = true
+z_index = 10
+amount = 4
+amount_ratio = 0.4
+texture = ExtResource("1_f6xy3")
+process_material = SubResource("ParticleProcessMaterial_ux0lf")

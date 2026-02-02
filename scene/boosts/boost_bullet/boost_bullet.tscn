@@ -1,0 +1,11 @@
+[gd_scene load_steps=4 format=3 uid="uid://bykwa63wxpx5o"]
+
+[ext_resource type="PackedScene" uid="uid://cpijrbk1ym1oe" path="res://scene/bases/boost_base/boost_base.tscn" id="1_mvwbr"]
+[ext_resource type="Script" uid="uid://dy6eo7h1wlpte" path="res://scene/boosts/boost_bullet/boost_bullet.gd" id="2_o7dek"]
+[ext_resource type="Texture2D" uid="uid://bd0a3ntqh3en3" path="res://icons/icon_boost_damage.png" id="3_o7dek"]
+
+[node name="BoostBullet" instance=ExtResource("1_mvwbr")]
+script = ExtResource("2_o7dek")
+
+[node name="IconSprite" parent="." index="1"]
+texture = ExtResource("3_o7dek")

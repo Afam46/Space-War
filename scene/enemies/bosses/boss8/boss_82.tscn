@@ -1,0 +1,105 @@
+[gd_scene load_steps=22 format=3 uid="uid://savgoeeiii4h"]
+
+[ext_resource type="PackedScene" uid="uid://bqalbxqvp523a" path="res://scene/bases/enemy_base/enemy_base.tscn" id="1_ivug5"]
+[ext_resource type="Script" uid="uid://c33mlubqwdyva" path="res://scene/enemies/bosses/boss8/boss_82.gd" id="2_gxhdf"]
+[ext_resource type="PackedScene" uid="uid://dtio7stox0bae" path="res://scene/player_scenes/coins/coin_silver/coin_silver.tscn" id="3_gstck"]
+[ext_resource type="PackedScene" uid="uid://dgg22eppriaxg" path="res://scene/enemies/freeze/ice/ice.tscn" id="3_wmkts"]
+[ext_resource type="Texture2D" uid="uid://w64qf1l51pro" path="res://aaasets/death_medium/death1.png" id="4_cb3e2"]
+[ext_resource type="Texture2D" uid="uid://cnmwmukt4r1ak" path="res://aaasets/death_medium/death2.png" id="5_lp4ic"]
+[ext_resource type="Texture2D" uid="uid://dh5yocgdi8fh1" path="res://aaasets/death_medium/death3.png" id="6_1buhy"]
+[ext_resource type="Texture2D" uid="uid://2dkpggj5qb5c" path="res://aaasets/death_medium/death4.png" id="7_q0pyu"]
+[ext_resource type="Texture2D" uid="uid://cewlqb3ru73vo" path="res://aaasets/death_medium/death5.png" id="8_m0g5i"]
+[ext_resource type="Texture2D" uid="uid://ld5i5ck53kw4" path="res://aaasets/death_medium/death6.png" id="9_ydqq2"]
+[ext_resource type="Texture2D" uid="uid://bjsvo5oiotnl" path="res://aaasets/death_medium/death7.png" id="10_58nyv"]
+[ext_resource type="Texture2D" uid="uid://bk4v45w5blolg" path="res://aaasets/death_medium/death8.png" id="11_nhajs"]
+[ext_resource type="Texture2D" uid="uid://dche0iwpqd83l" path="res://aaasets/death_medium/death9.png" id="12_37rcb"]
+[ext_resource type="Texture2D" uid="uid://7mqvjpn73a6b" path="res://aaasets/death_medium/death10.png" id="13_2e54p"]
+[ext_resource type="Texture2D" uid="uid://da1whvqxu6sn3" path="res://aaasets/death_medium/death11.png" id="14_q85mh"]
+[ext_resource type="Texture2D" uid="uid://ccjgp3cmwrx3l" path="res://aaasets/death_medium/death12.png" id="15_upy05"]
+[ext_resource type="Texture2D" uid="uid://dwky7kt6q1281" path="res://aaasets/death_medium/death13.png" id="16_ygxxb"]
+[ext_resource type="PackedScene" uid="uid://dtahj3kca4c6t" path="res://scene/enemies/bosses/boss8/weapon_boss_82.tscn" id="18_ffoj7"]
+[ext_resource type="Texture2D" uid="uid://oulnujhyimou" path="res://aaasets/enemies/bosses/boss8/boss8_2/boss_8_2_fly.png" id="18_wmkts"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ybjr6"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_cb3e2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_lp4ic")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_1buhy")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_q0pyu")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_m0g5i")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_ydqq2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_58nyv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_nhajs")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_37rcb")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_2e54p")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_q85mh")
+}, {
+"duration": 1.0,
+"texture": ExtResource("15_upy05")
+}, {
+"duration": 1.0,
+"texture": ExtResource("16_ygxxb")
+}],
+"loop": true,
+"name": &"death",
+"speed": 20.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("18_wmkts")
+}],
+"loop": true,
+"name": &"fly",
+"speed": 10.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_hdkkr"]
+radius = 94.0
+height = 248.0
+
+[node name="Boss82" groups=["bosses", "freezing_enemies"] instance=ExtResource("1_ivug5")]
+script = ExtResource("2_gxhdf")
+ice_scene = ExtResource("3_wmkts")
+coin_scene = ExtResource("3_gstck")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." index="2"]
+scale = Vector2(4, 4)
+sprite_frames = SubResource("SpriteFrames_ybjr6")
+animation = &"fly"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." index="3"]
+shape = SubResource("CapsuleShape2D_hdkkr")
+
+[node name="WeaponBoss82" parent="." index="4" instance=ExtResource("18_ffoj7")]
+position = Vector2(88, 22)
+
+[node name="WeaponBoss822" parent="." index="5" instance=ExtResource("18_ffoj7")]
+position = Vector2(-88, 22)
+
+[node name="Shot" type="Timer" parent="." index="6"]
+
+[connection signal="enemy_died" from="." to="WeaponBoss82" method="_on_boss_82_enemy_died"]
+[connection signal="enemy_died" from="." to="WeaponBoss822" method="_on_boss_82_enemy_died"]
+[connection signal="timeout" from="Shot" to="." method="_on_shot_timeout"]

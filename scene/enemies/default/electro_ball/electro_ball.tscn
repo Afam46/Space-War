@@ -1,0 +1,75 @@
+[gd_scene load_steps=12 format=3 uid="uid://ocmugf5phxi7"]
+
+[ext_resource type="Script" uid="uid://dfrr0jahqx6en" path="res://scene/enemies/default/electro_ball/electro_ball.gd" id="1_3q0dx"]
+[ext_resource type="Texture2D" uid="uid://dxyris0qdre2i" path="res://aaasets/bullets/electro_ball/electro_ball_create1.png" id="2_ov63e"]
+[ext_resource type="Texture2D" uid="uid://4hgpq5swqrxg" path="res://aaasets/bullets/electro_ball/electro_ball_create2.png" id="3_5y83u"]
+[ext_resource type="Texture2D" uid="uid://crwpqwk22v442" path="res://aaasets/bullets/electro_ball/electro_ball_create3.png" id="4_8hjux"]
+[ext_resource type="Texture2D" uid="uid://crkxpiyd17dq4" path="res://aaasets/bullets/electro_ball/electro_ball_create4.png" id="5_3q0dx"]
+[ext_resource type="Texture2D" uid="uid://cyxdtxwvbunx1" path="res://aaasets/bullets/electro_ball/electro_ball_create5.png" id="6_byilk"]
+[ext_resource type="Texture2D" uid="uid://bruwirhrsxeuu" path="res://aaasets/bullets/electro_ball/electro_ball_fly1.png" id="7_8hjux"]
+[ext_resource type="Texture2D" uid="uid://cnu4cndwt5g7e" path="res://aaasets/bullets/electro_ball/electro_ball_fly2.png" id="8_3q0dx"]
+[ext_resource type="Texture2D" uid="uid://ccr72i70d1n4k" path="res://aaasets/bullets/electro_ball/electro_ball_fly3.png" id="9_byilk"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_vvsen"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_ov63e")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_5y83u")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_8hjux")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_3q0dx")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_byilk")
+}],
+"loop": true,
+"name": &"create",
+"speed": 8.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("7_8hjux")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_3q0dx")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_byilk")
+}],
+"loop": true,
+"name": &"fly",
+"speed": 10.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_3q0dx"]
+radius = 24.0
+
+[node name="ElectroBall" type="RigidBody2D" groups=["bullets"]]
+z_index = 3
+collision_layer = 5
+collision_mask = 0
+gravity_scale = 0.0
+script = ExtResource("1_3q0dx")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+scale = Vector2(4, 4)
+sprite_frames = SubResource("SpriteFrames_vvsen")
+animation = &"fly"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_3q0dx")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 5.0
+autostart = true
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]

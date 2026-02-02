@@ -1,0 +1,57 @@
+[gd_scene load_steps=9 format=3 uid="uid://d31qoo0gjig68"]
+
+[ext_resource type="Script" uid="uid://b8sdkc05uaq88" path="res://scene/enemies/bosses/boss7/tail.gd" id="1_qf2uv"]
+[ext_resource type="Texture2D" uid="uid://cjvl2733ut4pi" path="res://aaasets/enemies/bosses/boss7/tail_rotate1.png" id="2_78fyl"]
+[ext_resource type="PackedScene" uid="uid://dopp5gbm8snd6" path="res://scene/enemies/freeze/enemy_ice_bullet/enemy_ice_bullet.tscn" id="2_jufwi"]
+[ext_resource type="Texture2D" uid="uid://dew04gh04uyin" path="res://aaasets/enemies/bosses/boss7/tail_rotate2.png" id="3_jufwi"]
+[ext_resource type="Texture2D" uid="uid://vmn1hm65t6no" path="res://aaasets/enemies/bosses/boss7/tail_rotate3.png" id="4_jrfdl"]
+[ext_resource type="Texture2D" uid="uid://bupm8gd43umk3" path="res://aaasets/enemies/bosses/boss7/tail_rotate4.png" id="5_pdqfv"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_qf2uv"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_78fyl")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 0.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_78fyl")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_jufwi")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_jrfdl")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_pdqfv")
+}],
+"loop": true,
+"name": &"rotate",
+"speed": 6.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_78fyl"]
+radius = 22.0
+height = 122.0
+
+[node name="Tail" type="Area2D" groups=["freezing_enemies"]]
+collision_layer = 3
+collision_mask = 4
+script = ExtResource("1_qf2uv")
+ice_bullet_scene = ExtResource("2_jufwi")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+scale = Vector2(4, 4)
+sprite_frames = SubResource("SpriteFrames_qf2uv")
+animation = &"idle"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+rotation = 1.5707964
+shape = SubResource("CapsuleShape2D_78fyl")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

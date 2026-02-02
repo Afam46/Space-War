@@ -1,0 +1,57 @@
+[gd_scene load_steps=10 format=3 uid="uid://b480it55qe461"]
+
+[ext_resource type="Script" uid="uid://c6vrf2ee1oe6v" path="res://scene/player_scenes/coins/coin_bronze/coin_bronze.gd" id="1_iwivy"]
+[ext_resource type="Texture2D" uid="uid://ctrsjlv1m6wc1" path="res://aaasets/coins/coin_brilliant/coin_brilliant1.png" id="2_b7cky"]
+[ext_resource type="Texture2D" uid="uid://c61r6e01pyo80" path="res://aaasets/coins/coin_brilliant/coin_brilliant2.png" id="3_yikvb"]
+[ext_resource type="Texture2D" uid="uid://cxflf0uwh15nu" path="res://aaasets/coins/coin_brilliant/coin_brilliant3.png" id="4_4v1ih"]
+[ext_resource type="Texture2D" uid="uid://b2x7n3ndddy4f" path="res://aaasets/coins/coin_brilliant/coin_brilliant4.png" id="5_otcu5"]
+[ext_resource type="Texture2D" uid="uid://cwjlny6dyes0w" path="res://aaasets/coins/coin_brilliant/coin_brilliant5.png" id="6_25e5q"]
+[ext_resource type="Texture2D" uid="uid://gyshu1katr8g" path="res://aaasets/coins/coin_brilliant/coin_brilliant6.png" id="7_ns6rr"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_40nag"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_b7cky")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_yikvb")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_4v1ih")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_otcu5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_25e5q")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_ns6rr")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 8.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_0e5ap"]
+radius = 25.019993
+
+[node name="CoinBrilliant" type="Area2D" groups=["coins"]]
+script = ExtResource("1_iwivy")
+value = 25
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." groups=["coins"]]
+scale = Vector2(4, 4)
+sprite_frames = SubResource("SpriteFrames_40nag")
+animation = &"idle"
+frame = 2
+frame_progress = 0.73034316
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_0e5ap")
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+rect = Rect2(-24, -24, 48, 48)
+
+[connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]

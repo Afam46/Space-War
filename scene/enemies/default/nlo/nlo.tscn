@@ -1,0 +1,99 @@
+[gd_scene load_steps=20 format=3 uid="uid://d1e70avqii58c"]
+
+[ext_resource type="PackedScene" uid="uid://bqalbxqvp523a" path="res://scene/bases/enemy_base/enemy_base.tscn" id="1_g8t3k"]
+[ext_resource type="Texture2D" uid="uid://w64qf1l51pro" path="res://aaasets/death_medium/death1.png" id="2_6q4ki"]
+[ext_resource type="Script" uid="uid://c8yma2aeqn8ro" path="res://scene/enemies/default/nlo/nlo.gd" id="2_opmb5"]
+[ext_resource type="PackedScene" uid="uid://bcxx65l78cdqv" path="res://scene/enemies/default/lazer/small_laser.tscn" id="3_378yf"]
+[ext_resource type="Texture2D" uid="uid://cnmwmukt4r1ak" path="res://aaasets/death_medium/death2.png" id="3_opmb5"]
+[ext_resource type="Texture2D" uid="uid://dh5yocgdi8fh1" path="res://aaasets/death_medium/death3.png" id="4_378yf"]
+[ext_resource type="Texture2D" uid="uid://2dkpggj5qb5c" path="res://aaasets/death_medium/death4.png" id="5_cpfuj"]
+[ext_resource type="Texture2D" uid="uid://cewlqb3ru73vo" path="res://aaasets/death_medium/death5.png" id="6_q2idr"]
+[ext_resource type="Texture2D" uid="uid://ld5i5ck53kw4" path="res://aaasets/death_medium/death6.png" id="7_17pid"]
+[ext_resource type="Texture2D" uid="uid://bjsvo5oiotnl" path="res://aaasets/death_medium/death7.png" id="8_dyew3"]
+[ext_resource type="Texture2D" uid="uid://bk4v45w5blolg" path="res://aaasets/death_medium/death8.png" id="9_7uvpm"]
+[ext_resource type="Texture2D" uid="uid://dche0iwpqd83l" path="res://aaasets/death_medium/death9.png" id="10_iy7lg"]
+[ext_resource type="Texture2D" uid="uid://7mqvjpn73a6b" path="res://aaasets/death_medium/death10.png" id="11_51y78"]
+[ext_resource type="Texture2D" uid="uid://da1whvqxu6sn3" path="res://aaasets/death_medium/death11.png" id="12_e0xt7"]
+[ext_resource type="Texture2D" uid="uid://ccjgp3cmwrx3l" path="res://aaasets/death_medium/death12.png" id="13_482kx"]
+[ext_resource type="Texture2D" uid="uid://dwky7kt6q1281" path="res://aaasets/death_medium/death13.png" id="14_ph14i"]
+[ext_resource type="Texture2D" uid="uid://bug42q1d7i882" path="res://aaasets/enemies/default/nlo/nlo.png" id="15_3mwsl"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_4d03c"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_6q4ki")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_opmb5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_378yf")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_cpfuj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_q2idr")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_17pid")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_dyew3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_7uvpm")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_iy7lg")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_51y78")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_e0xt7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_482kx")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_ph14i")
+}],
+"loop": true,
+"name": &"death",
+"speed": 20.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("15_3mwsl")
+}],
+"loop": true,
+"name": &"fly",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_g8t3k"]
+radius = 42.755116
+
+[node name="NLO" instance=ExtResource("1_g8t3k")]
+z_index = 1
+collision_layer = 3
+collision_mask = 0
+gravity_scale = 0.0
+script = ExtResource("2_opmb5")
+laser_scene = ExtResource("3_378yf")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." index="1"]
+scale = Vector2(4, 4)
+sprite_frames = SubResource("SpriteFrames_4d03c")
+animation = &"fly"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." index="2"]
+shape = SubResource("CircleShape2D_g8t3k")
+
+[node name="Shot" type="Timer" parent="." index="3"]
+wait_time = 4.0
+autostart = true
+
+[connection signal="timeout" from="Shot" to="." method="_on_shot_timeout"]

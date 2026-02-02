@@ -1,0 +1,62 @@
+[gd_scene load_steps=2 format=3 uid="uid://b0g6grfjkwick"]
+
+[ext_resource type="Script" uid="uid://b50o6pcteiod7" path="res://scene/game/shop_lobby/shop_lobby.gd" id="1_bs7t6"]
+
+[node name="ShopLobby" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_bs7t6")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 30
+theme_override_constants/margin_top = 30
+theme_override_constants/margin_right = 30
+theme_override_constants/margin_bottom = 30
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_constants/separation = 20
+
+[node name="BoostsShop" type="Button" parent="MarginContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 36
+text = "Бусты
+"
+
+[node name="SkinsShop" type="Button" parent="MarginContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 36
+text = "Корабли"
+
+[node name="Rashodniki" type="Button" parent="MarginContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 36
+text = "Расходники"
+
+[node name="Back" type="Button" parent="MarginContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+text = "Назад
+"
+
+[connection signal="pressed" from="MarginContainer/HBoxContainer/VBoxContainer/BoostsShop" to="." method="_on_boosts_shop_pressed"]
+[connection signal="pressed" from="MarginContainer/HBoxContainer/VBoxContainer/SkinsShop" to="." method="_on_skins_shop_pressed"]
+[connection signal="pressed" from="MarginContainer/HBoxContainer/VBoxContainer/Rashodniki" to="." method="_on_rashodniki_pressed"]
+[connection signal="pressed" from="MarginContainer/HBoxContainer/VBoxContainer/Back" to="." method="_on_back_pressed"]

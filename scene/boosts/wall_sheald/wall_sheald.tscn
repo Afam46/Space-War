@@ -1,0 +1,11 @@
+[gd_scene load_steps=4 format=3 uid="uid://r7xfwjer6d5k"]
+
+[ext_resource type="PackedScene" uid="uid://cpijrbk1ym1oe" path="res://scene/bases/boost_base/boost_base.tscn" id="1_yshpc"]
+[ext_resource type="Script" uid="uid://behhvl1wrkqo4" path="res://scene/boosts/wall_sheald/wall_sheald.gd" id="2_gv2vd"]
+[ext_resource type="Texture2D" uid="uid://c18yjocue5mss" path="res://icons/icon_sheald.png" id="2_y230r"]
+
+[node name="WallSheald" instance=ExtResource("1_yshpc")]
+script = ExtResource("2_gv2vd")
+
+[node name="IconSprite" parent="." index="1"]
+texture = ExtResource("2_y230r")

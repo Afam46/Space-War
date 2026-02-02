@@ -1,0 +1,32 @@
+[gd_scene load_steps=4 format=3 uid="uid://ce4jfsognjpoe"]
+
+[ext_resource type="Script" uid="uid://dvvqfb725ovpn" path="res://scene/enemies/bosses/boss6/boss_6_bullet.gd" id="1_jd6y2"]
+[ext_resource type="Texture2D" uid="uid://c6sstefqo6eki" path="res://aaasets/bullets/boss7_bullet.png" id="2_htoe3"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bowgu"]
+size = Vector2(20, 44)
+
+[node name="Boss6Bullet" type="RigidBody2D" groups=["bullets", "freezing_enemies"]]
+collision_layer = 5
+collision_mask = 0
+gravity_scale = 0.0
+script = ExtResource("1_jd6y2")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+rotation = 3.1415927
+scale = Vector2(4, 4)
+texture = ExtResource("2_htoe3")
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+rect = Rect2(-10, -22, 20, 44)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_bowgu")
+
+[node name="LifeTime" type="Timer" parent="."]
+wait_time = 4.0
+one_shot = true
+autostart = true
+
+[connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]
+[connection signal="timeout" from="LifeTime" to="." method="_on_life_time_timeout"]

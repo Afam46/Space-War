@@ -1,0 +1,90 @@
+[gd_scene load_steps=16 format=3 uid="uid://bk8alfp5g4pw5"]
+
+[ext_resource type="PackedScene" uid="uid://bqalbxqvp523a" path="res://scene/bases/enemy_base/enemy_base.tscn" id="1_lxno2"]
+[ext_resource type="Script" uid="uid://c8k6u4krjx2i8" path="res://scene/enemies/bosses/boss10/companion_boss_10.gd" id="2_hkgf0"]
+[ext_resource type="PackedScene" uid="uid://4rmmo5spxxj2" path="res://scene/player_scenes/player_magma_bullet/player_small_magma_bullet.tscn" id="3_xuqsv"]
+[ext_resource type="Texture2D" uid="uid://b13hhrlwjd3qm" path="res://aaasets/death_small/death1.png" id="4_exvcb"]
+[ext_resource type="Texture2D" uid="uid://kd33af3chnjl" path="res://aaasets/death_small/death2.png" id="5_uwncw"]
+[ext_resource type="Texture2D" uid="uid://cjt0xcv3j8mfw" path="res://aaasets/death_small/death3.png" id="6_r5k70"]
+[ext_resource type="Texture2D" uid="uid://dovvvfta4g00d" path="res://aaasets/death_small/death4.png" id="7_iwhwm"]
+[ext_resource type="Texture2D" uid="uid://c4sbymgehwxn1" path="res://aaasets/death_small/death5.png" id="8_nb5nc"]
+[ext_resource type="Texture2D" uid="uid://bqimh8yeam1e1" path="res://aaasets/death_small/death6.png" id="9_nvgjy"]
+[ext_resource type="Texture2D" uid="uid://b3rijjdn0abbc" path="res://aaasets/enemies/bosses/boss10/companion/boss10_companion_fly1.png" id="10_rqfqs"]
+[ext_resource type="Texture2D" uid="uid://i8sr6454tpr7" path="res://aaasets/enemies/bosses/boss10/companion/boss10_companion_fly2.png" id="11_6kt5x"]
+[ext_resource type="Texture2D" uid="uid://bif7bqo6ti61u" path="res://aaasets/enemies/bosses/boss10/companion/boss10_companion_fly3.png" id="12_mbq1g"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_oj3u2"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_exvcb")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_uwncw")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_r5k70")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_iwhwm")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_nb5nc")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_nvgjy")
+}],
+"loop": true,
+"name": &"death",
+"speed": 8.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("10_rqfqs")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_6kt5x")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_mbq1g")
+}],
+"loop": true,
+"name": &"fly",
+"speed": 5.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_aq8v3"]
+radius = 14.000002
+height = 54.000008
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_xuqsv"]
+radius = 14.0
+height = 54.0
+
+[node name="CompanionEggPlayer" groups=["friendly_enemies"] instance=ExtResource("1_lxno2")]
+collision_layer = 4
+collision_mask = 3
+script = ExtResource("2_hkgf0")
+enemy_bullet_scene = ExtResource("3_xuqsv")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." index="2"]
+scale = Vector2(4, 4)
+sprite_frames = SubResource("SpriteFrames_oj3u2")
+animation = &"fly"
+frame_progress = 0.6139133
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." index="3"]
+scale = Vector2(0.9999999, 0.9999999)
+shape = SubResource("CapsuleShape2D_aq8v3")
+
+[node name="Shot" type="Timer" parent="." index="4"]
+wait_time = 2.0
+autostart = true
+
+[node name="Area2D" type="Area2D" parent="." index="7"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" index="0"]
+shape = SubResource("CapsuleShape2D_xuqsv")
+
+[connection signal="timeout" from="Shot" to="." method="shot"]
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

@@ -1,0 +1,114 @@
+[gd_scene load_steps=25 format=3 uid="uid://07ehgd6ojii6"]
+
+[ext_resource type="PackedScene" uid="uid://bqalbxqvp523a" path="res://scene/bases/enemy_base/enemy_base.tscn" id="1_hdn25"]
+[ext_resource type="Script" uid="uid://csogrhe5x0dhh" path="res://scene/enemies/freeze/ice_drone/ice_drone.gd" id="2_45t3k"]
+[ext_resource type="Texture2D" uid="uid://w64qf1l51pro" path="res://aaasets/death_medium/death1.png" id="2_g438e"]
+[ext_resource type="Texture2D" uid="uid://cnmwmukt4r1ak" path="res://aaasets/death_medium/death2.png" id="3_45t3k"]
+[ext_resource type="PackedScene" uid="uid://4aocckcvpdvv" path="res://scene/enemies/freeze/ice_drone_bullet/ice_drone_bullet.tscn" id="3_nq40d"]
+[ext_resource type="PackedScene" uid="uid://dtio7stox0bae" path="res://scene/player_scenes/coins/coin_silver/coin_silver.tscn" id="4_17rym"]
+[ext_resource type="Texture2D" uid="uid://dh5yocgdi8fh1" path="res://aaasets/death_medium/death3.png" id="4_orcot"]
+[ext_resource type="Texture2D" uid="uid://2dkpggj5qb5c" path="res://aaasets/death_medium/death4.png" id="5_nq40d"]
+[ext_resource type="Texture2D" uid="uid://cewlqb3ru73vo" path="res://aaasets/death_medium/death5.png" id="6_17rym"]
+[ext_resource type="Texture2D" uid="uid://ld5i5ck53kw4" path="res://aaasets/death_medium/death6.png" id="7_0g0pa"]
+[ext_resource type="Texture2D" uid="uid://bjsvo5oiotnl" path="res://aaasets/death_medium/death7.png" id="8_f7ufh"]
+[ext_resource type="Texture2D" uid="uid://bk4v45w5blolg" path="res://aaasets/death_medium/death8.png" id="9_d555k"]
+[ext_resource type="Texture2D" uid="uid://dche0iwpqd83l" path="res://aaasets/death_medium/death9.png" id="10_66mrf"]
+[ext_resource type="Texture2D" uid="uid://7mqvjpn73a6b" path="res://aaasets/death_medium/death10.png" id="11_cnarq"]
+[ext_resource type="Texture2D" uid="uid://da1whvqxu6sn3" path="res://aaasets/death_medium/death11.png" id="12_4q5k5"]
+[ext_resource type="Texture2D" uid="uid://ccjgp3cmwrx3l" path="res://aaasets/death_medium/death12.png" id="13_d4y7a"]
+[ext_resource type="Texture2D" uid="uid://dwky7kt6q1281" path="res://aaasets/death_medium/death13.png" id="14_5afh5"]
+[ext_resource type="Texture2D" uid="uid://c5qne0ddem7w8" path="res://aaasets/enemies/freeze/ice_drone/ice_drone_fly1.png" id="15_wp1nm"]
+[ext_resource type="Texture2D" uid="uid://byx7pwrgx8ry2" path="res://aaasets/enemies/freeze/ice_drone/ice_drone_fly2.png" id="16_kjrq6"]
+[ext_resource type="Texture2D" uid="uid://da68budfspec8" path="res://aaasets/enemies/freeze/ice_drone/ice_drone_fly3.png" id="17_72vu4"]
+[ext_resource type="Texture2D" uid="uid://cn7w4rlj4anxx" path="res://aaasets/enemies/freeze/ice_drone/ice_drone_fly4.png" id="18_f7a0f"]
+[ext_resource type="Texture2D" uid="uid://ctdcbml3aex4m" path="res://aaasets/enemies/freeze/ice_drone/ice_drone_fly5.png" id="19_1hwbx"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_o2u64"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_g438e")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_45t3k")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_orcot")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_nq40d")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_17rym")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_0g0pa")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_f7ufh")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_d555k")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_66mrf")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_cnarq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_4q5k5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_d4y7a")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_5afh5")
+}],
+"loop": true,
+"name": &"death",
+"speed": 20.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("15_wp1nm")
+}, {
+"duration": 1.0,
+"texture": ExtResource("16_kjrq6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("17_72vu4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("18_f7a0f")
+}, {
+"duration": 1.0,
+"texture": ExtResource("19_1hwbx")
+}],
+"loop": true,
+"name": &"fly",
+"speed": 8.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_0g0pa"]
+radius = 66.189125
+
+[node name="IceDrone" groups=["freezing_enemies"] instance=ExtResource("1_hdn25")]
+script = ExtResource("2_45t3k")
+ice_drone_bullet_scene = ExtResource("3_nq40d")
+coin_scene = ExtResource("4_17rym")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." index="2"]
+rotation = 3.1415927
+scale = Vector2(4, 4)
+sprite_frames = SubResource("SpriteFrames_o2u64")
+animation = &"fly"
+frame = 1
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." index="3"]
+shape = SubResource("CircleShape2D_0g0pa")
+
+[node name="Shot" type="Timer" parent="." index="4"]
+autostart = true
+
+[connection signal="timeout" from="Shot" to="." method="_on_shot_timeout"]

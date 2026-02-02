@@ -1,0 +1,134 @@
+[gd_scene load_steps=26 format=3 uid="uid://c8pd0gdfhalue"]
+
+[ext_resource type="PackedScene" uid="uid://bqalbxqvp523a" path="res://scene/bases/enemy_base/enemy_base.tscn" id="1_yf73s"]
+[ext_resource type="Script" uid="uid://dlnk6m20f74pv" path="res://scene/enemies/bosses/boss9/boss_9.gd" id="2_dg1ae"]
+[ext_resource type="Texture2D" uid="uid://w64qf1l51pro" path="res://aaasets/death_medium/death1.png" id="2_l2lko"]
+[ext_resource type="Texture2D" uid="uid://cnmwmukt4r1ak" path="res://aaasets/death_medium/death2.png" id="3_dg1ae"]
+[ext_resource type="PackedScene" uid="uid://b4dusd83dlml4" path="res://scene/enemies/lava/spear/spear.tscn" id="3_ohlf4"]
+[ext_resource type="PackedScene" uid="uid://dprodurxendwn" path="res://scene/player_scenes/coins/coin_gold/coin_gold.tscn" id="3_p2guv"]
+[ext_resource type="PackedScene" uid="uid://dukq7nfxf5vd" path="res://scene/enemies/lava/lava_laser/lava_laser.tscn" id="4_ohlf4"]
+[ext_resource type="Texture2D" uid="uid://dh5yocgdi8fh1" path="res://aaasets/death_medium/death3.png" id="4_p2guv"]
+[ext_resource type="Texture2D" uid="uid://2dkpggj5qb5c" path="res://aaasets/death_medium/death4.png" id="5_ohlf4"]
+[ext_resource type="Texture2D" uid="uid://cewlqb3ru73vo" path="res://aaasets/death_medium/death5.png" id="6_cqi2y"]
+[ext_resource type="Texture2D" uid="uid://ld5i5ck53kw4" path="res://aaasets/death_medium/death6.png" id="7_53l60"]
+[ext_resource type="Texture2D" uid="uid://bjsvo5oiotnl" path="res://aaasets/death_medium/death7.png" id="8_krx5q"]
+[ext_resource type="Texture2D" uid="uid://bk4v45w5blolg" path="res://aaasets/death_medium/death8.png" id="9_o5v0j"]
+[ext_resource type="Texture2D" uid="uid://dche0iwpqd83l" path="res://aaasets/death_medium/death9.png" id="10_i5yas"]
+[ext_resource type="Texture2D" uid="uid://7mqvjpn73a6b" path="res://aaasets/death_medium/death10.png" id="11_048n0"]
+[ext_resource type="Texture2D" uid="uid://da1whvqxu6sn3" path="res://aaasets/death_medium/death11.png" id="12_nsgnm"]
+[ext_resource type="Texture2D" uid="uid://ccjgp3cmwrx3l" path="res://aaasets/death_medium/death12.png" id="13_nijqg"]
+[ext_resource type="Texture2D" uid="uid://dwky7kt6q1281" path="res://aaasets/death_medium/death13.png" id="14_amvli"]
+[ext_resource type="Texture2D" uid="uid://bl01yi6k0xijc" path="res://aaasets/enemies/bosses/boss9/boss9_fly1.png" id="15_yg0j8"]
+[ext_resource type="Texture2D" uid="uid://be0jpnwyop78b" path="res://aaasets/enemies/bosses/boss9/boss9_fly2.png" id="16_f8hgp"]
+[ext_resource type="Texture2D" uid="uid://dtncdo7rr43c0" path="res://aaasets/enemies/bosses/boss9/boss9_fly3.png" id="17_k6nsf"]
+[ext_resource type="Texture2D" uid="uid://cbi3h6hxkorcs" path="res://aaasets/enemies/bosses/boss9/boss9_fly4.png" id="18_dvejb"]
+[ext_resource type="Texture2D" uid="uid://bcv2otabofl2d" path="res://aaasets/enemies/bosses/boss9/boss9_fly5.png" id="19_8jpey"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_5poq2"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_l2lko")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_dg1ae")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_p2guv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_ohlf4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_cqi2y")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_53l60")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_krx5q")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_o5v0j")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_i5yas")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_048n0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_nsgnm")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_nijqg")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_amvli")
+}],
+"loop": true,
+"name": &"death",
+"speed": 20.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("15_yg0j8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("16_f8hgp")
+}, {
+"duration": 1.0,
+"texture": ExtResource("17_k6nsf")
+}, {
+"duration": 1.0,
+"texture": ExtResource("18_dvejb")
+}, {
+"duration": 1.0,
+"texture": ExtResource("19_8jpey")
+}],
+"loop": true,
+"name": &"fly",
+"speed": 10.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_110tk"]
+radius = 199.90498
+
+[node name="Boss9" groups=["bosses", "lava_enemies"] instance=ExtResource("1_yf73s")]
+z_index = 2
+script = ExtResource("2_dg1ae")
+spear_scene = ExtResource("3_ohlf4")
+lava_laser_scene = ExtResource("4_ohlf4")
+coin_scene = ExtResource("3_p2guv")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." index="4"]
+rotation = 3.1415927
+scale = Vector2(4, 4)
+sprite_frames = SubResource("SpriteFrames_5poq2")
+animation = &"fly"
+frame = 4
+frame_progress = 0.9499518
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." index="5"]
+shape = SubResource("CircleShape2D_110tk")
+
+[node name="SpearShot" type="Timer" parent="." index="6"]
+wait_time = 3.0
+autostart = true
+
+[node name="Dash" type="Timer" parent="." index="7"]
+wait_time = 8.0
+one_shot = true
+autostart = true
+
+[node name="ReverseSpearShot" type="Timer" parent="." index="8"]
+wait_time = 3.0
+
+[node name="SpawnLavaLaser" type="Timer" parent="." index="9"]
+wait_time = 12.0
+autostart = true
+
+[connection signal="timeout" from="SpearShot" to="." method="_on_spear_shot_timeout"]
+[connection signal="timeout" from="Dash" to="." method="_on_dash_timeout"]
+[connection signal="timeout" from="ReverseSpearShot" to="." method="_on_reverse_spear_shot_timeout"]
+[connection signal="timeout" from="SpawnLavaLaser" to="." method="_on_spawn_lava_laser_timeout"]

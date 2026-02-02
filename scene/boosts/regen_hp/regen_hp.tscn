@@ -1,0 +1,11 @@
+[gd_scene load_steps=4 format=3 uid="uid://b2vei7miifxoc"]
+
+[ext_resource type="PackedScene" uid="uid://cpijrbk1ym1oe" path="res://scene/bases/boost_base/boost_base.tscn" id="1_bvhou"]
+[ext_resource type="Texture2D" uid="uid://du24t2eo582uc" path="res://icons/icon_regen_hp.png" id="2_8b2o1"]
+[ext_resource type="Script" uid="uid://dgsfujy02dx76" path="res://scene/boosts/regen_hp/regen_hp.gd" id="2_on6qy"]
+
+[node name="RegenHP" instance=ExtResource("1_bvhou")]
+script = ExtResource("2_on6qy")
+
+[node name="IconSprite" parent="." index="1"]
+texture = ExtResource("2_8b2o1")

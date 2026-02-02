@@ -1,0 +1,110 @@
+[gd_scene load_steps=50 format=3 uid="uid://lkggoymqyg0a"]
+
+[ext_resource type="PackedScene" uid="uid://cclltl1a7vf46" path="res://scene/player_scenes/player/player.tscn" id="1_v0l8b"]
+[ext_resource type="Script" uid="uid://c35csi1f0iubw" path="res://scene/game/main/main.gd" id="1_wp4xf"]
+[ext_resource type="PackedScene" uid="uid://bdvl15fof8cgs" path="res://scene/enemies/default/rocket/rocket.tscn" id="2_52l20"]
+[ext_resource type="PackedScene" uid="uid://co316ly38uwuy" path="res://scene/enemies/default/meteor/meteor.tscn" id="3_52l20"]
+[ext_resource type="PackedScene" uid="uid://cq0aedy343w1e" path="res://scene/enemies/default/one_shooter/one_shooter.tscn" id="3_brvut"]
+[ext_resource type="PackedScene" uid="uid://cw1go0qsa0x2l" path="res://scene/game/hud/hud.tscn" id="5_0ha60"]
+[ext_resource type="PackedScene" uid="uid://dbds8jqarx3d3" path="res://scene/enemies/default/double_shooter/double_shooter.tscn" id="5_pidc3"]
+[ext_resource type="PackedScene" uid="uid://hevnnm5oiwyh" path="res://scene/enemies/bosses/boss2/boss_2.tscn" id="9_n5o2v"]
+[ext_resource type="PackedScene" uid="uid://sp6vbogumr4" path="res://scene/enemies/default/rusher/rusher.tscn" id="11_snrr3"]
+[ext_resource type="PackedScene" uid="uid://bi7gh758dufa" path="res://scene/enemies/default/rocket_shooter/rocket_shooter.tscn" id="12_36wa8"]
+[ext_resource type="PackedScene" uid="uid://c48346b3lq8rf" path="res://scene/enemies/bosses/boss1/boss_1.tscn" id="12_52l20"]
+[ext_resource type="PackedScene" uid="uid://dgg22eppriaxg" path="res://scene/enemies/freeze/ice/ice.tscn" id="12_mafln"]
+[ext_resource type="PackedScene" uid="uid://c2ugwkpsqhagu" path="res://scene/enemies/freeze/freeze_one_shooter/freeze_one_shooter.tscn" id="13_8vt8n"]
+[ext_resource type="PackedScene" uid="uid://dyqrihlb5rgst" path="res://scene/enemies/default/electro_shooter/electro_shooter.tscn" id="13_n5o2v"]
+[ext_resource type="PackedScene" uid="uid://d2l4msxfm5r3v" path="res://scene/enemies/freeze/freeze_double_shooter/freeze_double_shooter.tscn" id="14_fa5px"]
+[ext_resource type="PackedScene" uid="uid://epn7cjtkuisj" path="res://scene/enemies/bosses/boss3/boss_3.tscn" id="15_cust8"]
+[ext_resource type="PackedScene" uid="uid://dh3emr8xapm6k" path="res://scene/enemies/default/triple_shooter/triple_shooter.tscn" id="15_ortbh"]
+[ext_resource type="PackedScene" uid="uid://b7tmkehhgcgqm" path="res://scene/enemies/freeze/ice_bomber/ice_bomber.tscn" id="15_up7xh"]
+[ext_resource type="PackedScene" uid="uid://07ehgd6ojii6" path="res://scene/enemies/freeze/ice_drone/ice_drone.tscn" id="16_cl0vb"]
+[ext_resource type="PackedScene" uid="uid://dqw0p2vcqn1ba" path="res://scene/enemies/bosses/boss4/boss_4.tscn" id="17_mm1ql"]
+[ext_resource type="PackedScene" uid="uid://k1f1cg1odajq" path="res://scene/enemies/freeze/feather_shooter/feather_shooter.tscn" id="18_ad3p3"]
+[ext_resource type="Script" uid="uid://cpegf5op81qq5" path="res://scene/game/main/mob_path.gd" id="19_676lm"]
+[ext_resource type="PackedScene" uid="uid://c5fwx63641ljm" path="res://scene/enemies/default/magma_shooter/magma_shooter.tscn" id="19_tyv27"]
+[ext_resource type="Script" uid="uid://2u2eiho7f5gj" path="res://scene/game/main/start_position.gd" id="20_mafln"]
+[ext_resource type="PackedScene" uid="uid://c5t0f28ndhf0n" path="res://scene/enemies/bosses/boss8/boss_81.tscn" id="21_ad3p3"]
+[ext_resource type="PackedScene" uid="uid://od30u52g3h35" path="res://scene/enemies/bosses/boss6/boss_6.tscn" id="21_nmaim"]
+[ext_resource type="PackedScene" uid="uid://d0nfqnv2xqq7p" path="res://scene/enemies/lava/lava_ball/lava_ball.tscn" id="21_u0ofi"]
+[ext_resource type="PackedScene" uid="uid://d1e70avqii58c" path="res://scene/enemies/default/nlo/nlo.tscn" id="21_x8g4k"]
+[ext_resource type="PackedScene" uid="uid://d1jyt57b8knna" path="res://scene/enemies/lava/rotate_one_shooter/rotate_one_shooter.tscn" id="22_2ot47"]
+[ext_resource type="PackedScene" uid="uid://dukq7nfxf5vd" path="res://scene/enemies/lava/lava_laser/lava_laser.tscn" id="22_u0ofi"]
+[ext_resource type="PackedScene" uid="uid://bpappiq35vm5l" path="res://scene/enemies/bosses/boss5/boss_5.tscn" id="23_8887q"]
+[ext_resource type="PackedScene" uid="uid://dqerh14gwh3g4" path="res://scene/enemies/bosses/boss7/boss_7.tscn" id="25_d7j8l"]
+[ext_resource type="PackedScene" uid="uid://cdcvanf7dwyw0" path="res://scene/enemies/bosses/boss10/egg.tscn" id="25_mqekb"]
+[ext_resource type="PackedScene" uid="uid://blf6ggpdqo7rl" path="res://scene/game/vignette/vignette.tscn" id="26_4oqic"]
+[ext_resource type="PackedScene" uid="uid://ccdubwq8vy5gh" path="res://scene/enemies/freeze/quadro_shooter/quadro_shooter.tscn" id="29_nmaim"]
+[ext_resource type="PackedScene" uid="uid://b27dktmloygw0" path="res://scene/enemies/freeze/triple_rotate_shooter/triple_rotate_shooter.tscn" id="33_d7j8l"]
+[ext_resource type="PackedScene" uid="uid://1cjr403n7hk5" path="res://scene/enemies/freeze/sheald_ship/sheald_ship.tscn" id="34_4kavh"]
+[ext_resource type="PackedScene" uid="uid://d4ldnk3kuunvk" path="res://scene/enemies/bosses/boss12/boss_12.tscn" id="38_34f7m"]
+[ext_resource type="PackedScene" uid="uid://c8pd0gdfhalue" path="res://scene/enemies/bosses/boss9/boss_9.tscn" id="38_ovj6v"]
+[ext_resource type="PackedScene" uid="uid://bn1j8p6442glc" path="res://scene/enemies/bosses/boss10/boss_10.tscn" id="39_ioncr"]
+[ext_resource type="PackedScene" uid="uid://s4b0i42kr55b" path="res://scene/enemies/lava/lava_double_shooter/lava_double_shooter.tscn" id="39_ycuim"]
+[ext_resource type="PackedScene" uid="uid://cv3kfj6btfcds" path="res://scene/enemies/bosses/boss11/boss_11.tscn" id="40_2prtt"]
+[ext_resource type="PackedScene" uid="uid://bhfab20n7xdtq" path="res://scene/enemies/lava/lava_one_shooter/lava_one_shooter.tscn" id="41_phf01"]
+[ext_resource type="PackedScene" uid="uid://clacnpxi5q18m" path="res://scene/enemies/lava/rotate_shooter/rotate_shooter.tscn" id="42_gfq87"]
+[ext_resource type="PackedScene" uid="uid://cqb7asw5s7n7p" path="res://scene/enemies/lava/lava_crab/lava_crab.tscn" id="43_ui3ll"]
+[ext_resource type="PackedScene" uid="uid://cnlagga7c1rk5" path="res://scene/enemies/lava/five_shooter/five_shooter.tscn" id="44_34f7m"]
+[ext_resource type="PackedScene" uid="uid://bu1tfa0g6jmoh" path="res://scene/boosts/spawn_lasers/spawn_lasers.tscn" id="45_ovj6v"]
+[ext_resource type="PackedScene" uid="uid://de7b3olep8l1v" path="res://scene/boosts/triple_bullet_h/triple_bullet_h.tscn" id="48_2prtt"]
+
+[sub_resource type="Curve2D" id="Curve2D_brvut"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 720, 0)
+}
+point_count = 2
+
+[node name="Main" type="Node"]
+script = ExtResource("1_wp4xf")
+all_enemy_scenes = Array[PackedScene]([ExtResource("2_52l20"), ExtResource("3_52l20"), ExtResource("3_brvut"), ExtResource("11_snrr3"), ExtResource("5_pidc3"), ExtResource("12_36wa8"), ExtResource("13_n5o2v"), ExtResource("15_ortbh"), ExtResource("19_tyv27"), ExtResource("21_x8g4k"), ExtResource("12_mafln"), ExtResource("13_8vt8n"), ExtResource("14_fa5px"), ExtResource("15_up7xh"), ExtResource("16_cl0vb"), ExtResource("29_nmaim"), ExtResource("18_ad3p3"), ExtResource("33_d7j8l"), ExtResource("34_4kavh"), ExtResource("21_u0ofi"), ExtResource("22_u0ofi"), ExtResource("22_2ot47"), ExtResource("39_ycuim"), ExtResource("25_mqekb"), ExtResource("41_phf01"), ExtResource("42_gfq87"), ExtResource("43_ui3ll"), ExtResource("44_34f7m")])
+default_bosses = Array[PackedScene]([ExtResource("12_52l20"), ExtResource("9_n5o2v"), ExtResource("15_cust8"), ExtResource("17_mm1ql")])
+freeze_bosses = Array[PackedScene]([ExtResource("23_8887q"), ExtResource("21_nmaim"), ExtResource("25_d7j8l"), ExtResource("21_ad3p3")])
+lava_bosses = Array[PackedScene]([ExtResource("38_ovj6v"), ExtResource("39_ioncr"), ExtResource("40_2prtt"), ExtResource("38_34f7m")])
+
+[node name="Player" parent="." instance=ExtResource("1_v0l8b")]
+z_index = 0
+position = Vector2(-378.99994, 381)
+
+[node name="MobTimer" type="Timer" parent="."]
+wait_time = 2.0
+
+[node name="StartTimer" type="Timer" parent="."]
+wait_time = 2.0
+one_shot = true
+
+[node name="BoostTimer" type="Timer" parent="."]
+wait_time = 10.0
+autostart = true
+
+[node name="MobPath" type="Path2D" parent="."]
+curve = SubResource("Curve2D_brvut")
+script = ExtResource("19_676lm")
+
+[node name="MobSpawnLocation" type="PathFollow2D" parent="MobPath"]
+
+[node name="StartPosition" type="Marker2D" parent="."]
+position = Vector2(360, 800)
+script = ExtResource("20_mafln")
+
+[node name="Vignette" parent="." instance=ExtResource("26_4oqic")]
+
+[node name="HUD" parent="." instance=ExtResource("5_0ha60")]
+
+[node name="ClearCheckTimer" type="Timer" parent="."]
+
+[node name="SpawnLasers" parent="." instance=ExtResource("45_ovj6v")]
+position = Vector2(360, 360)
+
+[node name="TripleBulletH" parent="." instance=ExtResource("48_2prtt")]
+position = Vector2(173, 529)
+
+[connection signal="take_damage" from="Player" to="." method="_on_player_take_damage"]
+[connection signal="update_coins_label" from="Player" to="HUD" method="_on_player_update_coins_label"]
+[connection signal="update_hp" from="Player" to="." method="_on_player_update_hp"]
+[connection signal="timeout" from="MobTimer" to="." method="_on_mob_timer_timeout"]
+[connection signal="timeout" from="StartTimer" to="." method="_on_start_timer_timeout"]
+[connection signal="timeout" from="BoostTimer" to="." method="_on_boost_timer_timeout"]
+[connection signal="restart" from="HUD" to="." method="_on_hud_restart"]
+[connection signal="use_rashodnik" from="HUD" to="." method="_on_use_rashodnik"]
+[connection signal="timeout" from="ClearCheckTimer" to="." method="_on_clear_check_timer_timeout"]

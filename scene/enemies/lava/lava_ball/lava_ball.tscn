@@ -1,0 +1,63 @@
+[gd_scene load_steps=12 format=3 uid="uid://d0nfqnv2xqq7p"]
+
+[ext_resource type="PackedScene" uid="uid://bqalbxqvp523a" path="res://scene/bases/enemy_base/enemy_base.tscn" id="1_iysn6"]
+[ext_resource type="Texture2D" uid="uid://cgrs1ykxi7xer" path="res://aaasets/enemies/lava/lava_ball/lava_ball_death1.png" id="2_mss5b"]
+[ext_resource type="Script" uid="uid://bx1lupkqgjyo5" path="res://scene/enemies/lava/lava_ball/lava_ball.gd" id="2_ygpfs"]
+[ext_resource type="PackedScene" uid="uid://d0jglui7ebedu" path="res://scene/enemies/default/magma_bullets/magma_bullet.tscn" id="3_3by0b"]
+[ext_resource type="Texture2D" uid="uid://br6ex81onql63" path="res://aaasets/enemies/lava/lava_ball/lava_ball_death2.png" id="3_ygpfs"]
+[ext_resource type="Texture2D" uid="uid://j113ciggncy1" path="res://aaasets/enemies/lava/lava_ball/lava_ball_death3.png" id="4_3by0b"]
+[ext_resource type="PackedScene" uid="uid://dprodurxendwn" path="res://scene/player_scenes/coins/coin_gold/coin_gold.tscn" id="4_t0cka"]
+[ext_resource type="Texture2D" uid="uid://b7taluqqlq6mi" path="res://aaasets/enemies/lava/lava_ball/lava_ball_death4.png" id="5_t0cka"]
+[ext_resource type="Texture2D" uid="uid://dx6aexhtmqtim" path="res://aaasets/enemies/lava/lava_ball/lava_ball_death5.png" id="6_wqwih"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_c7ftm"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_mss5b")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_ygpfs")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_3by0b")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_t0cka")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_wqwih")
+}],
+"loop": true,
+"name": &"death",
+"speed": 8.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_mss5b")
+}],
+"loop": true,
+"name": &"fly",
+"speed": 0.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_3nahc"]
+radius = 32.01562
+
+[node name="LavaBall" instance=ExtResource("1_iysn6")]
+script = ExtResource("2_ygpfs")
+magma_bullet_scene = ExtResource("3_3by0b")
+coin_scene = ExtResource("4_t0cka")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." index="4"]
+scale = Vector2(4, 4)
+sprite_frames = SubResource("SpriteFrames_c7ftm")
+animation = &"fly"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." index="5"]
+shape = SubResource("CircleShape2D_3nahc")
+
+[node name="VisibleOnScreenEnabler2D" type="VisibleOnScreenEnabler2D" parent="." index="6"]
+rect = Rect2(-32, -32, 64, 64)
+
+[connection signal="screen_exited" from="VisibleOnScreenEnabler2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]

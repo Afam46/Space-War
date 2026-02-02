@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://d2i4tsge223u0"]
+
+[ext_resource type="PackedScene" uid="uid://ce4jfsognjpoe" path="res://scene/enemies/bosses/boss6/boss6_bullet.tscn" id="1_mgoht"]
+[ext_resource type="Script" uid="uid://ukvm7aml3r11" path="res://scene/player_scenes/feather/feather_spining.gd" id="2_unxw2"]
+
+[node name="FeatherSpining" instance=ExtResource("1_mgoht")]
+z_index = 10
+collision_layer = 4
+collision_mask = 3
+script = ExtResource("2_unxw2")
+
+[node name="Sprite2D" parent="." index="0"]
+rotation = 0.0
+
+[node name="LifeTime" parent="." index="3"]
+wait_time = 10.0

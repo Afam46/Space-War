@@ -1,0 +1,101 @@
+[gd_scene load_steps=20 format=3 uid="uid://k7f4lgclk718"]
+
+[ext_resource type="Texture2D" uid="uid://b13hhrlwjd3qm" path="res://aaasets/death_small/death1.png" id="1_kvk4j"]
+[ext_resource type="Script" uid="uid://n2yx8pad2wue" path="res://scene/player_scenes/companion/companion.gd" id="1_uhuwq"]
+[ext_resource type="PackedScene" uid="uid://csjf5rbpo71h6" path="res://scene/player_scenes/ice_bullet/ice_bullet.tscn" id="2_j15ac"]
+[ext_resource type="Texture2D" uid="uid://kd33af3chnjl" path="res://aaasets/death_small/death2.png" id="2_uhuwq"]
+[ext_resource type="Texture2D" uid="uid://cjt0xcv3j8mfw" path="res://aaasets/death_small/death3.png" id="3_j15ac"]
+[ext_resource type="PackedScene" uid="uid://d42nw71d0b5p" path="res://scene/game/damage_number.tscn" id="3_re2ah"]
+[ext_resource type="Texture2D" uid="uid://dovvvfta4g00d" path="res://aaasets/death_small/death4.png" id="4_re2ah"]
+[ext_resource type="Texture2D" uid="uid://c4sbymgehwxn1" path="res://aaasets/death_small/death5.png" id="5_i0tjr"]
+[ext_resource type="Texture2D" uid="uid://bqimh8yeam1e1" path="res://aaasets/death_small/death6.png" id="6_rjt72"]
+[ext_resource type="Texture2D" uid="uid://cvbr65cm7ptbv" path="res://aaasets/boosts/companion/companion_fly1.png" id="7_b7uaq"]
+[ext_resource type="Texture2D" uid="uid://d0ctevcjnfip" path="res://aaasets/boosts/companion/companion_fly2.png" id="8_gr5uo"]
+[ext_resource type="Texture2D" uid="uid://c8e8462fuld2r" path="res://aaasets/boosts/companion/companion_fly3.png" id="9_6g1gx"]
+[ext_resource type="Texture2D" uid="uid://dgr1olaopef4j" path="res://aaasets/boosts/companion/companion_fly4.png" id="10_qimg7"]
+[ext_resource type="Texture2D" uid="uid://chvr4ki7lcul0" path="res://aaasets/boosts/companion/companion_fly5.png" id="11_6sklj"]
+[ext_resource type="AudioStream" uid="uid://l651he1a1rqy" path="res://aasounds/explosion_small_2.wav" id="15_b7uaq"]
+[ext_resource type="AudioStream" uid="uid://qlqs634ftsqh" path="res://aasounds/shot/shot_2.wav" id="17_6sklj"]
+[ext_resource type="AudioStream" uid="uid://hb1tlobfk7e0" path="res://aasounds/metal_hit/metal_hit_1.wav" id="17_b7uaq"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_tqpnq"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_kvk4j")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_uhuwq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_j15ac")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_re2ah")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_i0tjr")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_rjt72")
+}],
+"loop": true,
+"name": &"death",
+"speed": 8.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("7_b7uaq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_gr5uo")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_6g1gx")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_qimg7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_6sklj")
+}],
+"loop": true,
+"name": &"fly",
+"speed": 10.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_lal6t"]
+radius = 29.0
+height = 72.0
+
+[node name="Companion" type="Area2D" groups=["boosts"]]
+z_index = 15
+script = ExtResource("1_uhuwq")
+bullet_scene = ExtResource("2_j15ac")
+damage_number_scene = ExtResource("3_re2ah")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+scale = Vector2(4, 4)
+sprite_frames = SubResource("SpriteFrames_tqpnq")
+animation = &"fly"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CapsuleShape2D_lal6t")
+
+[node name="Shot" type="Timer" parent="."]
+wait_time = 1.5
+autostart = true
+
+[node name="Death" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("15_b7uaq")
+volume_db = 20.0
+
+[node name="ShotSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("17_6sklj")
+volume_db = 8.0
+
+[node name="Hit" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("17_b7uaq")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="timeout" from="Shot" to="." method="_on_shot_timeout"]

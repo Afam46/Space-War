@@ -1,0 +1,11 @@
+[gd_scene load_steps=4 format=3 uid="uid://b5spmng0en4id"]
+
+[ext_resource type="PackedScene" uid="uid://cpijrbk1ym1oe" path="res://scene/bases/boost_base/boost_base.tscn" id="1_od3uo"]
+[ext_resource type="Texture2D" uid="uid://0ux0nvlx7b0j" path="res://icons/icon_spawn_meteors.png" id="2_ktjhj"]
+[ext_resource type="Script" uid="uid://b177kasmpymvj" path="res://scene/boosts/spawn_meteors/spawn_meteors.gd" id="2_mtnkp"]
+
+[node name="SpawnMeteors" instance=ExtResource("1_od3uo")]
+script = ExtResource("2_mtnkp")
+
+[node name="IconSprite" parent="." index="1"]
+texture = ExtResource("2_ktjhj")

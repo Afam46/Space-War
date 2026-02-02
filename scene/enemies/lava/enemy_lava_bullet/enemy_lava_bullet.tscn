@@ -1,0 +1,31 @@
+[gd_scene load_steps=4 format=3 uid="uid://e8elg6ssoy0f"]
+
+[ext_resource type="Script" uid="uid://c8wo1gx3rfokv" path="res://scene/enemies/lava/enemy_lava_bullet/enemy_lava_bullet.gd" id="1_kaqy1"]
+[ext_resource type="Texture2D" uid="uid://0abher1ep1lf" path="res://aaasets/bullets/lava_bullet.png" id="2_kaqy1"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_tsdkm"]
+size = Vector2(20, 40)
+
+[node name="EnemyLavaBullet" type="RigidBody2D" groups=["bullets", "lava_enemies"]]
+top_level = true
+collision_layer = 5
+collision_mask = 0
+gravity_scale = 0.0
+script = ExtResource("1_kaqy1")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+rotation = -3.1415925
+scale = Vector2(4, 4)
+texture = ExtResource("2_kaqy1")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_tsdkm")
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+position = Vector2(4, 3)
+rect = Rect2(-14, -23, 20, 40)
+
+[node name="RicochetSound" type="AudioStreamPlayer2D" parent="."]
+volume_db = 12.0
+
+[connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]

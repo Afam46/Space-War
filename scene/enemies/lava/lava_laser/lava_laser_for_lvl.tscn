@@ -1,0 +1,62 @@
+[gd_scene load_steps=9 format=3 uid="uid://bkjhhy5slwv5i"]
+
+[ext_resource type="PackedScene" uid="uid://bqalbxqvp523a" path="res://scene/bases/enemy_base/enemy_base.tscn" id="1_t6qnl"]
+[ext_resource type="Script" uid="uid://cslidt7asondy" path="res://scene/enemies/lava/lava_laser/lava_laser_for_lvl.gd" id="2_ha6kd"]
+[ext_resource type="Texture2D" uid="uid://bud638v4u0drm" path="res://aaasets/enemies/lava/lava_laser/lava_laser_death1.png" id="4_mivh4"]
+[ext_resource type="Texture2D" uid="uid://tw2ci6mt3yny" path="res://aaasets/enemies/lava/lava_laser/lava_laser_death2.png" id="5_ugpp7"]
+[ext_resource type="Texture2D" uid="uid://b2qkybwygnh8n" path="res://aaasets/enemies/lava/lava_laser/lava_laser_death3.png" id="6_w6ul8"]
+[ext_resource type="Texture2D" uid="uid://bffe72hine3p2" path="res://aaasets/enemies/lava/lava_laser/lava_laser_death4.png" id="7_pkt6f"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_lfmqp"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_mivh4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_ugpp7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_w6ul8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_pkt6f")
+}],
+"loop": true,
+"name": &"death",
+"speed": 8.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_mivh4")
+}],
+"loop": true,
+"name": &"fly",
+"speed": 0.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_vudye"]
+radius = 25.0
+height = 256.0
+
+[node name="LavaLaserForLvl" groups=["bosses"] instance=ExtResource("1_t6qnl")]
+script = ExtResource("2_ha6kd")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." index="4"]
+scale = Vector2(4, 4)
+sprite_frames = SubResource("SpriteFrames_lfmqp")
+animation = &"fly"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." index="5"]
+position = Vector2(2, -2)
+rotation = 1.5707964
+shape = SubResource("CapsuleShape2D_vudye")
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="." index="6"]
+rect = Rect2(-126, -26, 256, 48)
+
+[node name="VisibleOnScreenNotifier2D2" type="VisibleOnScreenNotifier2D" parent="." index="7"]
+rect = Rect2(-126, -26, 256, 48)
+
+[connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]
+[connection signal="screen_entered" from="VisibleOnScreenNotifier2D2" to="." method="_on_visible_on_screen_notifier_2d2_screen_entered"]

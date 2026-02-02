@@ -1,0 +1,151 @@
+[gd_scene load_steps=32 format=3 uid="uid://od30u52g3h35"]
+
+[ext_resource type="PackedScene" uid="uid://bqalbxqvp523a" path="res://scene/bases/enemy_base/enemy_base.tscn" id="1_8wkj5"]
+[ext_resource type="Script" uid="uid://drq2mt75usv02" path="res://scene/enemies/bosses/boss6/boss_6.gd" id="2_6dqka"]
+[ext_resource type="PackedScene" uid="uid://dtio7stox0bae" path="res://scene/player_scenes/coins/coin_silver/coin_silver.tscn" id="3_wow47"]
+[ext_resource type="Texture2D" uid="uid://byy540imrsg51" path="res://aaasets/death_big/death1.png" id="4_08qr5"]
+[ext_resource type="Texture2D" uid="uid://bfh1lqqa6t6c4" path="res://aaasets/death_big/death2.png" id="5_cgebb"]
+[ext_resource type="Texture2D" uid="uid://brvdeersu0aud" path="res://aaasets/death_big/death3.png" id="6_ohj51"]
+[ext_resource type="Texture2D" uid="uid://jninaaa04w40" path="res://aaasets/death_big/death4.png" id="7_flv8m"]
+[ext_resource type="Texture2D" uid="uid://ctglb80f6ivlp" path="res://aaasets/death_big/death5.png" id="8_rutpi"]
+[ext_resource type="Texture2D" uid="uid://bl1l0rxf7pps0" path="res://aaasets/death_big/death6.png" id="9_tdra1"]
+[ext_resource type="Texture2D" uid="uid://c6h3wti8oydwf" path="res://aaasets/death_big/death7.png" id="10_e5twh"]
+[ext_resource type="Texture2D" uid="uid://ducqxnx8pp8bg" path="res://aaasets/death_big/death8.png" id="11_sk4sf"]
+[ext_resource type="Texture2D" uid="uid://ckt55u11ncgdc" path="res://aaasets/death_big/death9.png" id="12_4mrlc"]
+[ext_resource type="Texture2D" uid="uid://cg5ivhs321h21" path="res://aaasets/death_big/death10.png" id="13_h586b"]
+[ext_resource type="Texture2D" uid="uid://gygsx68cgi2e" path="res://aaasets/death_big/death11.png" id="14_3vn3r"]
+[ext_resource type="Texture2D" uid="uid://dbkpoyam4wnlk" path="res://aaasets/death_big/death12.png" id="15_cfn6a"]
+[ext_resource type="Texture2D" uid="uid://b3kk8qjp4jxi3" path="res://aaasets/enemies/bosses/boss6/boss7_fly1.png" id="15_nltch"]
+[ext_resource type="Texture2D" uid="uid://b3rl3l2n4as2n" path="res://aaasets/death_big/death13.png" id="16_bpp4x"]
+[ext_resource type="Texture2D" uid="uid://787ps2hpgiym" path="res://aaasets/enemies/bosses/boss6/boss7_fly2.png" id="16_bsy2j"]
+[ext_resource type="Texture2D" uid="uid://cmue54m2ne4h8" path="res://aaasets/enemies/bosses/boss6/boss7_fly3.png" id="17_hrkh2"]
+[ext_resource type="Texture2D" uid="uid://cb0ugtfdmd43x" path="res://aaasets/death_big/death14.png" id="17_tjuvt"]
+[ext_resource type="Texture2D" uid="uid://cdtrca4wus7r6" path="res://aaasets/enemies/bosses/boss6/boss7_fly4.png" id="18_6o3p7"]
+[ext_resource type="Texture2D" uid="uid://c51sun3htm0ax" path="res://aaasets/death_big/death15.png" id="18_i176k"]
+[ext_resource type="Texture2D" uid="uid://cwq1437damuo3" path="res://aaasets/enemies/bosses/boss6/boss7_fly5.png" id="19_cvdfi"]
+[ext_resource type="Texture2D" uid="uid://cd0sprwutngv6" path="res://aaasets/death_big/death16.png" id="19_xufof"]
+[ext_resource type="Texture2D" uid="uid://bbooeqibq5qfw" path="res://aaasets/death_big/death17.png" id="20_h60t2"]
+[ext_resource type="Texture2D" uid="uid://dnr5binjbsef7" path="res://aaasets/death_big/death18.png" id="21_0031w"]
+[ext_resource type="Texture2D" uid="uid://dj0raxmxphrdy" path="res://aaasets/death_big/death19.png" id="22_iu3q2"]
+[ext_resource type="Texture2D" uid="uid://cbhlyr3fpjerc" path="res://aaasets/death_big/death20.png" id="23_8ypq8"]
+[ext_resource type="Texture2D" uid="uid://b8s5ig5sxluau" path="res://aaasets/death_big/death21.png" id="24_bbge8"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_s0w0s"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_08qr5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_cgebb")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_ohj51")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_flv8m")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_rutpi")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_tdra1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_e5twh")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_sk4sf")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_4mrlc")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_h586b")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_3vn3r")
+}, {
+"duration": 1.0,
+"texture": ExtResource("15_cfn6a")
+}, {
+"duration": 1.0,
+"texture": ExtResource("16_bpp4x")
+}, {
+"duration": 1.0,
+"texture": ExtResource("17_tjuvt")
+}, {
+"duration": 1.0,
+"texture": ExtResource("18_i176k")
+}, {
+"duration": 1.0,
+"texture": ExtResource("19_xufof")
+}, {
+"duration": 1.0,
+"texture": ExtResource("20_h60t2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("21_0031w")
+}, {
+"duration": 1.0,
+"texture": ExtResource("22_iu3q2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("23_8ypq8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("24_bbge8")
+}],
+"loop": true,
+"name": &"death",
+"speed": 20.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("15_nltch")
+}, {
+"duration": 1.0,
+"texture": ExtResource("16_bsy2j")
+}, {
+"duration": 1.0,
+"texture": ExtResource("17_hrkh2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("18_6o3p7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("19_cvdfi")
+}],
+"loop": true,
+"name": &"fly",
+"speed": 8.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_335d4"]
+radius = 175.13994
+
+[node name="Boss6" groups=["bosses", "freezing_enemies"] instance=ExtResource("1_8wkj5")]
+z_index = 1
+script = ExtResource("2_6dqka")
+coin_scene = ExtResource("3_wow47")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." index="2"]
+rotation = 3.1415927
+scale = Vector2(4, 4)
+sprite_frames = SubResource("SpriteFrames_s0w0s")
+animation = &"fly"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." index="3"]
+shape = SubResource("CircleShape2D_335d4")
+
+[node name="Doodge" type="Timer" parent="." index="4"]
+wait_time = 2.0
+one_shot = true
+autostart = true
+
+[node name="Dash" type="Timer" parent="." index="5"]
+wait_time = 2.0
+one_shot = true
+
+[connection signal="timeout" from="Doodge" to="." method="_on_doodge_timeout"]
+[connection signal="timeout" from="Dash" to="." method="_on_dash_timeout"]

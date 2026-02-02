@@ -1,0 +1,30 @@
+[gd_scene load_steps=4 format=3 uid="uid://dbv8kjeho4kkv"]
+
+[ext_resource type="Script" uid="uid://m3ghx33regtw" path="res://scene/player_scenes/wall_sheald/wall_sheald.gd" id="1_tnjxq"]
+[ext_resource type="Texture2D" uid="uid://bjrp6g3wyaapj" path="res://aaasets/boosts/sheald.png" id="2_nuwpg"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_tnjxq"]
+size = Vector2(34.43635, 118.97843)
+
+[node name="WallSheald" type="Area2D" groups=["boosts"]]
+collision_layer = 5
+collision_mask = 3
+script = ExtResource("1_tnjxq")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(4, 4)
+texture = ExtResource("2_nuwpg")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-46.099518, 1.6666219)
+rotation = 1.2217305
+scale = Vector2(0.9999999, 0.9999999)
+shape = SubResource("RectangleShape2D_tnjxq")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="."]
+position = Vector2(46.20947, 1.8332851)
+rotation = -1.2217305
+scale = Vector2(0.9999999, 0.9999999)
+shape = SubResource("RectangleShape2D_tnjxq")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

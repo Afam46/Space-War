@@ -1,6 +1,29 @@
-[gd_scene load_steps=2 format=3 uid="uid://cpijrbk1ym1oe"]
+[gd_scene load_steps=5 format=3 uid="uid://cpijrbk1ym1oe"]
 
 [ext_resource type="Script" uid="uid://cehd8nkmrv23p" path="res://scene/bases/boost_base/boost_base.gd" id="1_si6qu"]
+[ext_resource type="PackedScene" uid="uid://cjv5qsbjnldts" path="res://scene/particles/purple_boost/purple_boost.tscn" id="2_d70xw"]
+[ext_resource type="Texture2D" uid="uid://b5w8chmxa6pre" path="res://aaasets/frame/frame1.png" id="3_d70xw"]
 
-[node name="BoostBase" type="Area2D"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rh1ca"]
+size = Vector2(96, 96)
+
+[node name="BoostBase" type="Area2D" groups=["boosts"]]
+z_index = -1
 script = ExtResource("1_si6qu")
+particle_scene = ExtResource("2_d70xw")
+
+[node name="FrameSprite" type="Sprite2D" parent="."]
+scale = Vector2(4, 4)
+texture = ExtResource("3_d70xw")
+
+[node name="IconSprite" type="Sprite2D" parent="."]
+scale = Vector2(4, 4)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_rh1ca")
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+rect = Rect2(-48, -48, 96, 96)
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
+[connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]

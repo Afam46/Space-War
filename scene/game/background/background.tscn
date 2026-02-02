@@ -1,0 +1,66 @@
+[gd_scene load_steps=8 format=3 uid="uid://bg5h2p2wg8c5j"]
+
+[ext_resource type="Texture2D" uid="uid://dnkoeypmp24dx" path="res://aaasets/bgs/bg_freeze_1.png" id="2_8dplh"]
+[ext_resource type="Texture2D" uid="uid://6obn20mca0gd" path="res://aaasets/bgs/bg_new.png" id="2_b61o1"]
+[ext_resource type="Script" uid="uid://bvh2ivopdf1dt" path="res://scene/game/background/background.gd" id="2_k1xhc"]
+[ext_resource type="Texture2D" uid="uid://chlcr2sf3154c" path="res://aaasets/bgs/bg_over_new.png" id="3_b61o1"]
+[ext_resource type="Texture2D" uid="uid://rkq0pnxdumu" path="res://aaasets/bgs/bg_freeze_2.png" id="3_q1uoo"]
+[ext_resource type="Texture2D" uid="uid://bgs5s7ea211e3" path="res://aaasets/bgs/bg_lava1.png" id="6_7oann"]
+[ext_resource type="Texture2D" uid="uid://c0ncumacrlmk5" path="res://aaasets/bgs/bg_lava2.png" id="7_y8ony"]
+
+[node name="ParallaxBackground" type="ParallaxBackground"]
+script = ExtResource("2_k1xhc")
+normal_texture1 = ExtResource("2_b61o1")
+normal_texture2 = ExtResource("3_b61o1")
+freeze_texture1 = ExtResource("2_8dplh")
+freeze_texture2 = ExtResource("3_q1uoo")
+lava_texture1 = ExtResource("6_7oann")
+lava_texture2 = ExtResource("7_y8ony")
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="."]
+motion_mirroring = Vector2(720, 1080)
+
+[node name="TextureRect" type="TextureRect" parent="ParallaxLayer"]
+texture_repeat = 1
+offset_right = 1024.0
+offset_bottom = 1440.0
+size_flags_horizontal = 6
+size_flags_vertical = 6
+expand_mode = 3
+stretch_mode = 1
+
+[node name="TextureRectFade" type="TextureRect" parent="ParallaxLayer"]
+modulate = Color(1, 1, 1, 0)
+texture_repeat = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+expand_mode = 3
+stretch_mode = 1
+
+[node name="ParallaxLayer2" type="ParallaxLayer" parent="."]
+motion_mirroring = Vector2(720, 1080)
+
+[node name="TextureRect" type="TextureRect" parent="ParallaxLayer2"]
+texture_repeat = 1
+offset_right = 1024.0
+offset_bottom = 1440.0
+size_flags_horizontal = 6
+size_flags_vertical = 6
+expand_mode = 3
+stretch_mode = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="TextureRectFade" type="TextureRect" parent="ParallaxLayer2"]
+modulate = Color(1, 1, 1, 0)
+texture_repeat = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+expand_mode = 3
+stretch_mode = 1
+metadata/_edit_use_anchors_ = true

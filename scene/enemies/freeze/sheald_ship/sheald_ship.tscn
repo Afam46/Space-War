@@ -1,0 +1,111 @@
+[gd_scene load_steps=25 format=3 uid="uid://1cjr403n7hk5"]
+
+[ext_resource type="PackedScene" uid="uid://bqalbxqvp523a" path="res://scene/bases/enemy_base/enemy_base.tscn" id="1_a773l"]
+[ext_resource type="Texture2D" uid="uid://w64qf1l51pro" path="res://aaasets/death_medium/death1.png" id="2_dxqux"]
+[ext_resource type="Script" uid="uid://4n856otte85l" path="res://scene/enemies/freeze/sheald_ship/sheald_ship.gd" id="2_o4tyt"]
+[ext_resource type="PackedScene" uid="uid://dtio7stox0bae" path="res://scene/player_scenes/coins/coin_silver/coin_silver.tscn" id="3_726dc"]
+[ext_resource type="Texture2D" uid="uid://cnmwmukt4r1ak" path="res://aaasets/death_medium/death2.png" id="3_o4tyt"]
+[ext_resource type="Texture2D" uid="uid://dh5yocgdi8fh1" path="res://aaasets/death_medium/death3.png" id="4_726dc"]
+[ext_resource type="Texture2D" uid="uid://2dkpggj5qb5c" path="res://aaasets/death_medium/death4.png" id="5_0uamh"]
+[ext_resource type="Texture2D" uid="uid://cewlqb3ru73vo" path="res://aaasets/death_medium/death5.png" id="6_1v3bs"]
+[ext_resource type="Texture2D" uid="uid://ld5i5ck53kw4" path="res://aaasets/death_medium/death6.png" id="7_x24oa"]
+[ext_resource type="Texture2D" uid="uid://bjsvo5oiotnl" path="res://aaasets/death_medium/death7.png" id="8_268oc"]
+[ext_resource type="Texture2D" uid="uid://bk4v45w5blolg" path="res://aaasets/death_medium/death8.png" id="9_yca8i"]
+[ext_resource type="Texture2D" uid="uid://dche0iwpqd83l" path="res://aaasets/death_medium/death9.png" id="10_wewks"]
+[ext_resource type="Texture2D" uid="uid://7mqvjpn73a6b" path="res://aaasets/death_medium/death10.png" id="11_x2jcc"]
+[ext_resource type="Texture2D" uid="uid://da1whvqxu6sn3" path="res://aaasets/death_medium/death11.png" id="12_kp0xu"]
+[ext_resource type="Texture2D" uid="uid://ccjgp3cmwrx3l" path="res://aaasets/death_medium/death12.png" id="13_yuwk7"]
+[ext_resource type="Texture2D" uid="uid://dwky7kt6q1281" path="res://aaasets/death_medium/death13.png" id="14_brxdk"]
+[ext_resource type="Texture2D" uid="uid://jewbhrf6607g" path="res://aaasets/enemies/freeze/sheald_ship/sheald_ship_fly1.png" id="15_vfhwo"]
+[ext_resource type="Texture2D" uid="uid://bl44m3nlkhyf" path="res://aaasets/enemies/freeze/sheald_ship/sheald_ship_fly2.png" id="16_qb2gb"]
+[ext_resource type="Texture2D" uid="uid://bticawfe64ww" path="res://aaasets/enemies/freeze/sheald_ship/sheald_ship_fly3.png" id="17_5ilu1"]
+[ext_resource type="Texture2D" uid="uid://dy3ujes470000" path="res://aaasets/enemies/freeze/sheald_ship/sheald_ship_fly4.png" id="18_p4kgj"]
+[ext_resource type="Texture2D" uid="uid://b8swjxf7ltkpe" path="res://aaasets/enemies/freeze/sheald_ship/sheald_ship_fly5.png" id="19_otalb"]
+[ext_resource type="PackedScene" uid="uid://2hxl1ldmaox4" path="res://scene/enemies/freeze/sheald_ship/sheald_enemy.tscn" id="22_726dc"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ucjoy"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_dxqux")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_o4tyt")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_726dc")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_0uamh")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_1v3bs")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_x24oa")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_268oc")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_yca8i")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_wewks")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_x2jcc")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_kp0xu")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_yuwk7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_brxdk")
+}],
+"loop": true,
+"name": &"death",
+"speed": 20.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("15_vfhwo")
+}, {
+"duration": 1.0,
+"texture": ExtResource("16_qb2gb")
+}, {
+"duration": 1.0,
+"texture": ExtResource("17_5ilu1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("18_p4kgj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("19_otalb")
+}],
+"loop": true,
+"name": &"fly",
+"speed": 10.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_726dc"]
+size = Vector2(168, 116)
+
+[node name="ShealdShip" groups=["freezing_enemies"] instance=ExtResource("1_a773l")]
+script = ExtResource("2_o4tyt")
+coin_scene = ExtResource("3_726dc")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." index="2"]
+rotation = 3.1415927
+scale = Vector2(4, 4)
+sprite_frames = SubResource("SpriteFrames_ucjoy")
+animation = &"fly"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." index="3"]
+position = Vector2(0, 2)
+shape = SubResource("RectangleShape2D_726dc")
+
+[node name="ShealdEnemy" parent="." index="4" instance=ExtResource("22_726dc")]
+position = Vector2(0, 70)
