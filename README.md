@@ -6,6 +6,6 @@
 
 ## 📸 Скриншоты
 
-![Ледяной биом(screenshots/ice.png)
+![Ледяной биом](screenshots/ice.png)
 
-![Лавовый биом(screenshots/lava.png)
+![Лавовый биом](screenshots/lava.png)
